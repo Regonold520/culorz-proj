@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c73ue4gmfej8i"
-path="res://.godot/imported/ambur_chr.png-d61e46c9b90994b39b45d92533dbc89e.ctex"
+path="res://.godot/imported/mage_chr.png-ff35c458d3bf6be4309c9015bdcc0105.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Culorz/ambur_chr.png"
-dest_files=["res://.godot/imported/ambur_chr.png-d61e46c9b90994b39b45d92533dbc89e.ctex"]
+source_file="res://Culorz/mage_chr.png"
+dest_files=["res://.godot/imported/mage_chr.png-ff35c458d3bf6be4309c9015bdcc0105.ctex"]
 
 [params]
 
