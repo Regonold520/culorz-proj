@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://w70p3r721utp"]
+
+[ext_resource type="Script" path="res://Culor.gd" id="1_ynaqt"]
+[ext_resource type="Texture2D" uid="uid://btwhj5axtvyxy" path="res://Culorz/purpul_chr.png" id="2_kmf3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
+size = Vector2(14, 15)
+
+[node name="Purple" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_ynaqt")
+culor = Color(0.462745, 0.258824, 0.541176, 1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_kmf3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_uqd2g")
+debug_color = Color(0, 0.6, 0.701961, 0)

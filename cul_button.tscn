@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi0eaavsru80j"]
+
+[ext_resource type="Script" path="res://cul_button.gd" id="1_2keu1"]
+[ext_resource type="Texture2D" uid="uid://ekc7cpu58gdy" path="res://Culorz/rainbow_chr.png" id="2_c5v1c"]
+[ext_resource type="Texture2D" uid="uid://kfxjwvwu72m3" path="res://cul_button_boarder.png" id="3_8upx0"]
+
+[node name="CulButton" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 100
+custom_minimum_size = Vector2(41.855, 41.935)
+scale = Vector2(10.0698, 10.0698)
+script = ExtResource("1_2keu1")
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+position = Vector2(20.8544, 20.7551)
+scale = Vector2(1.92591, 1.92591)
+texture = ExtResource("2_c5v1c")
+
+[node name="Boarder" type="Sprite2D" parent="."]
+position = Vector2(21.0429, 21.0429)
+scale = Vector2(1.868, 1.868)
+texture = ExtResource("3_8upx0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

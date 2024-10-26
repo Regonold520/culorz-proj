@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6uv0j3633wft"]
+
+[ext_resource type="Script" path="res://Culor.gd" id="1_xh3o1"]
+[ext_resource type="Texture2D" uid="uid://w0xoc2mtfht8" path="res://Culorz/gray_chr.png" id="2_xas6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
+size = Vector2(14, 9)
+
+[node name="Gray" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_xh3o1")
+culor = Color(0.411765, 0.415686, 0.415686, 1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_xas6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_uqd2g")
+debug_color = Color(0, 0.6, 0.701961, 0)
