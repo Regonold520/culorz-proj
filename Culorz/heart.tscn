@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://0qgftagkvqsa"]
+
+[ext_resource type="Script" path="res://Culor.gd" id="1_jd7n6"]
+[ext_resource type="Texture2D" uid="uid://c5d35m6r8hbam" path="res://Culorz/heart_chr.png" id="2_6bbwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
+size = Vector2(14, 13)
+
+[node name="Heart" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_jd7n6")
+culor = Color(0.67451, 0.196078, 0.356863, 1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_6bbwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_uqd2g")
+debug_color = Color(0, 0.6, 0.701961, 0)

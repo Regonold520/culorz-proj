@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://lgtn5ywxx5vl"]
+
+[ext_resource type="Script" path="res://Culor.gd" id="1_g5uiw"]
+[ext_resource type="Texture2D" uid="uid://b7m3gm086lbkc" path="res://Culorz/nunchucks_chr.png" id="2_nmvym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
+size = Vector2(14, 11)
+
+[node name="Chartreuse" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_g5uiw")
+culor = Color(0.6, 0.898039, 0.313726, 1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_nmvym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_uqd2g")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)

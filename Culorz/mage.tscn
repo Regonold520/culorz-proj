@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbrb56a80ruo2"]
+
+[ext_resource type="Script" path="res://Culor.gd" id="1_fggmn"]
+[ext_resource type="Texture2D" uid="uid://c73ue4gmfej8i" path="res://Culorz/mage_chr.png" id="2_tby1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
+size = Vector2(14, 12)
+
+[node name="Ambur" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_fggmn")
+culor = Color(0.87451, 0.576471, 0.14902, 1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_tby1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_uqd2g")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)

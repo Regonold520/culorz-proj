@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=19 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Script" path="res://globalactor.gd" id="1_m0nfr"]
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
@@ -7,14 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dsiqiagsj4ghb" path="res://Bosses/la’bombuss_boss.png" id="4_0w23x"]
 [ext_resource type="Script" path="res://Enemy.gd" id="4_3vr10"]
 [ext_resource type="Texture2D" uid="uid://onul5eai0mn" path="res://Enemies/blob_ene.png" id="4_b4s0p"]
-[ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/vermilion.tscn" id="8_1gy0p"]
-[ext_resource type="PackedScene" uid="uid://d0vi64yrcje4c" path="res://Culorz/violet.tscn" id="9_huic8"]
+[ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="8_1gy0p"]
+[ext_resource type="PackedScene" uid="uid://d0vi64yrcje4c" path="res://Culorz/axe.tscn" id="9_huic8"]
 [ext_resource type="Script" path="res://mixing_ui.gd" id="9_nnif3"]
 [ext_resource type="Script" path="res://confirm_mixing.gd" id="10_2s5of"]
-[ext_resource type="PackedScene" uid="uid://dawd5bl85b0d1" path="res://Culorz/red.tscn" id="10_y0sk4"]
-[ext_resource type="PackedScene" uid="uid://da45227mnif4u" path="res://Culorz/green.tscn" id="11_huaef"]
+[ext_resource type="PackedScene" uid="uid://dawd5bl85b0d1" path="res://Culorz/boxer.tscn" id="10_y0sk4"]
+[ext_resource type="PackedScene" uid="uid://da45227mnif4u" path="res://Culorz/pistol.tscn" id="11_huaef"]
 [ext_resource type="Script" path="res://ui_builder.gd" id="12_hn3qh"]
-[ext_resource type="PackedScene" uid="uid://dbrb56a80ruo2" path="res://Culorz/ambur.tscn" id="13_wpnx2"]
+[ext_resource type="PackedScene" uid="uid://dbrb56a80ruo2" path="res://Culorz/mage.tscn" id="13_wpnx2"]
+[ext_resource type="PackedScene" uid="uid://k4tpos4l53tx" path="res://Culorz/folder.tscn" id="16_l3ld5"]
+[ext_resource type="PackedScene" uid="uid://0qgftagkvqsa" path="res://Culorz/heart.tscn" id="17_8g88v"]
+[ext_resource type="PackedScene" uid="uid://dl04vuxqh7ead" path="res://Culorz/minigun.tscn" id="18_4n6jc"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -76,6 +79,7 @@ offset_bottom = 40.0
 scale = Vector2(2.51674, 2.51674)
 
 [node name="MixingUI" type="Control" parent="Camera2D/UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 791.0
@@ -151,6 +155,15 @@ position = Vector2(-47, 30)
 position = Vector2(42, 34)
 
 [node name="Ambur" parent="Culors" instance=ExtResource("13_wpnx2")]
+
+[node name="Folder" parent="Culors" instance=ExtResource("16_l3ld5")]
+position = Vector2(-23, 71)
+
+[node name="Heart" parent="Culors" instance=ExtResource("17_8g88v")]
+position = Vector2(33, 53)
+
+[node name="Minigun" parent="Culors" instance=ExtResource("18_4n6jc")]
+position = Vector2(96, 31)
 
 [node name="Threats" type="Node2D" parent="."]
 

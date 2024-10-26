@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccuuh05bwxng5"]
+
+[ext_resource type="Script" path="res://Culor.gd" id="1_msl8x"]
+[ext_resource type="Texture2D" uid="uid://nhooaf0cpw6c" path="res://Culorz/scythe_chr.png" id="2_ml3v0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
+size = Vector2(14, 8)
+
+[node name="Shield" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_msl8x")
+culor = Color(0.54902, 0.32549, 0.631373, 1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_ml3v0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_uqd2g")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
