@@ -1,13 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3gfudi6vbguo"]
 
-[ext_resource type="Script" path="res://Culor.gd" id="1_cmg4a"]
+[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_cmg4a"]
 [ext_resource type="Texture2D" uid="uid://b8teqai10lfws" path="res://Culorz/shield_chr.png" id="2_5vh8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 9)
 
 [node name="Shield" type="CharacterBody2D"]
-collision_mask = 2
 script = ExtResource("1_cmg4a")
 culor = Color(0.509804, 0.501961, 0.862745, 1)
 

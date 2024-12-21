@@ -1,21 +1,24 @@
-[gd_scene load_steps=17 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=20 format=3 uid="uid://goop3qaepptx"]
 
+[ext_resource type="Script" path="res://globalactor.gd" id="1_m0nfr"]
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
-[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
+[ext_resource type="Script" path="res://Boss.gd" id="2_7vqtr"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="3_2l4j3"]
+[ext_resource type="Texture2D" uid="uid://dsiqiagsj4ghb" path="res://Bosses/la’bombuss_boss.png" id="4_0w23x"]
+[ext_resource type="Script" path="res://Enemy.gd" id="4_3vr10"]
+[ext_resource type="Texture2D" uid="uid://onul5eai0mn" path="res://Enemies/blob_ene.png" id="4_b4s0p"]
 [ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="8_1gy0p"]
 [ext_resource type="PackedScene" uid="uid://d0vi64yrcje4c" path="res://Culorz/axe.tscn" id="9_huic8"]
-[ext_resource type="Script" path="res://Scripts/mixing_ui.gd" id="9_nnif3"]
-[ext_resource type="Script" path="res://Scripts/Melee.gd" id="9_pfb0k"]
-[ext_resource type="Script" path="res://Scripts/confirm_mixing.gd" id="10_2s5of"]
+[ext_resource type="Script" path="res://mixing_ui.gd" id="9_nnif3"]
+[ext_resource type="Script" path="res://confirm_mixing.gd" id="10_2s5of"]
 [ext_resource type="PackedScene" uid="uid://dawd5bl85b0d1" path="res://Culorz/boxer.tscn" id="10_y0sk4"]
 [ext_resource type="PackedScene" uid="uid://da45227mnif4u" path="res://Culorz/pistol.tscn" id="11_huaef"]
-[ext_resource type="Script" path="res://Scripts/ui_builder.gd" id="12_hn3qh"]
+[ext_resource type="Script" path="res://ui_builder.gd" id="12_hn3qh"]
 [ext_resource type="PackedScene" uid="uid://dbrb56a80ruo2" path="res://Culorz/mage.tscn" id="13_wpnx2"]
-[ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="15_mbndy"]
 [ext_resource type="PackedScene" uid="uid://k4tpos4l53tx" path="res://Culorz/folder.tscn" id="16_l3ld5"]
 [ext_resource type="PackedScene" uid="uid://0qgftagkvqsa" path="res://Culorz/heart.tscn" id="17_8g88v"]
 [ext_resource type="PackedScene" uid="uid://dl04vuxqh7ead" path="res://Culorz/minigun.tscn" id="18_4n6jc"]
-[ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
+[ext_resource type="Script" path="res://culors_manager.gd" id="19_6oaph"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -25,6 +28,36 @@ offset_left = -606.0
 offset_top = -362.0
 offset_right = 648.0
 offset_bottom = 375.0
+
+[node name="GLOBALACTOR" type="Node" parent="."]
+script = ExtResource("1_m0nfr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = -1001
+offset_left = -319.0
+offset_top = 4.0
+offset_right = 317.0
+offset_bottom = 44.0
+rotation = -6.28319
+alignment = 1
+
+[node name="La\'Bombuss" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75.2, -1000)
+layout_mode = 2
+script = ExtResource("2_7vqtr")
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/La\'Bombuss"]
+position = Vector2(38, -38.9984)
+texture = ExtResource("4_0w23x")
+
+[node name="Blob" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(13.89, -1000)
+layout_mode = 2
+script = ExtResource("4_3vr10")
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Blob"]
+position = Vector2(6, -9.99994)
+texture = ExtResource("4_b4s0p")
 
 [node name="Canvas" type="Sprite2D" parent="."]
 z_index = -1000
@@ -113,11 +146,9 @@ position = Vector2(-79, 52)
 
 [node name="Violet" parent="Culors" instance=ExtResource("9_huic8")]
 position = Vector2(54, 63)
-safe_margin = 0.001
 
 [node name="Red" parent="Culors" instance=ExtResource("10_y0sk4")]
 position = Vector2(-47, 30)
-script = ExtResource("9_pfb0k")
 
 [node name="Green" parent="Culors" instance=ExtResource("11_huaef")]
 position = Vector2(42, 34)
@@ -139,20 +170,7 @@ position = Vector2(96, 31)
 [node name="CulorsManager" type="Node2D" parent="."]
 script = ExtResource("19_6oaph")
 
-[node name="RallyCooldown" type="Timer" parent="CulorsManager"]
-wait_time = 0.5
-
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(122, -1)
-
-[node name="MoveArea" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MoveArea"]
-polygon = PackedVector2Array(-121, 4, 121, 4, 153, 98, -153, 98)
-
-[node name="Blob" parent="." instance=ExtResource("15_mbndy")]
-position = Vector2(-73, 21)
+position = Vector2(60, 0)
 
 [connection signal="pressed" from="Camera2D/UI/MixingUI/Button" to="Camera2D/UI/MixingUI/Button" method="_on_pressed"]
-[connection signal="timeout" from="CulorsManager/RallyCooldown" to="CulorsManager" method="allowrally"]

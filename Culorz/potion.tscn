@@ -1,13 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6t2d2fmve24n"]
 
-[ext_resource type="Script" path="res://Culor.gd" id="1_saa1x"]
+[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_saa1x"]
 [ext_resource type="Texture2D" uid="uid://b6ykv0vmyqc04" path="res://Culorz/potion_chr.png" id="2_tbdrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(12, 11)
 
 [node name="Potion" type="CharacterBody2D"]
-collision_mask = 2
 script = ExtResource("1_saa1x")
 culor = Color(0.792157, 0.921569, 0.262745, 1)
 

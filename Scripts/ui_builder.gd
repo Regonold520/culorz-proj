@@ -5,11 +5,6 @@ extends Node
 func _ready():
 	_build_culor_buttons()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _build_culor_buttons():
 	for i in $"../../../Culors".get_children():
 		print(i)

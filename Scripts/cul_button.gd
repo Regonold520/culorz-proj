@@ -12,11 +12,7 @@ var isMixingButton = false
 
 func _ready():
 	textureStartPos = find_child("TextureRect").global_position
-	print(find_child("TextureRect").global_position)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 func _on_pressed():
 	
 	if !isMixingButton:

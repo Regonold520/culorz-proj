@@ -1,29 +1,14 @@
 extends Node
 
-var selectedCulor = null
-var selectedCulorNode = null
+
 
 var tweenPos
 var zoomPos
 
-func _set_culor(culorName, culorNode):
-	var cam = get_tree().current_scene.find_child("Camera2D")
-	tweenPos = create_tween()
-	tweenPos.set_trans(Tween.TRANS_CIRC)
-	
-	zoomPos = create_tween()
-	zoomPos.set_trans(Tween.TRANS_CIRC)
-	
-	selectedCulor = culorName
-	selectedCulorNode = culorNode
-
-	if culorNode != null:
-		tweenPos.tween_property(cam, "global_position", culorNode.global_position, 0.25)
-		zoomPos.tween_property(cam, "zoom", Vector2(4.215, 4.215), 0.25)
-	elif culorNode == null:
-		tweenPos.tween_property(cam, "global_position", Vector2(0,0), 0.25)
-		zoomPos.tween_property(cam, "zoom", Vector2(3.215, 3.215), 0.25)
-		
+func get_selected_culors():
+	if len(get_tree().get_nodes_in_group("Selected_Culor")) == 0:
+		return false
+	return get_tree().get_nodes_in_group("Selected_Culor")
 
 func _idle_logic(timer, tex, randomOffset, multiplier):
 	var Cosi = cos(timer + randomOffset)

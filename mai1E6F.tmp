@@ -1,21 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=15 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
-[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="3_2l4j3"]
 [ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="8_1gy0p"]
 [ext_resource type="PackedScene" uid="uid://d0vi64yrcje4c" path="res://Culorz/axe.tscn" id="9_huic8"]
-[ext_resource type="Script" path="res://Scripts/mixing_ui.gd" id="9_nnif3"]
-[ext_resource type="Script" path="res://Scripts/Melee.gd" id="9_pfb0k"]
-[ext_resource type="Script" path="res://Scripts/confirm_mixing.gd" id="10_2s5of"]
+[ext_resource type="Script" path="res://mixing_ui.gd" id="9_nnif3"]
+[ext_resource type="Script" path="res://confirm_mixing.gd" id="10_2s5of"]
 [ext_resource type="PackedScene" uid="uid://dawd5bl85b0d1" path="res://Culorz/boxer.tscn" id="10_y0sk4"]
 [ext_resource type="PackedScene" uid="uid://da45227mnif4u" path="res://Culorz/pistol.tscn" id="11_huaef"]
-[ext_resource type="Script" path="res://Scripts/ui_builder.gd" id="12_hn3qh"]
+[ext_resource type="Script" path="res://ui_builder.gd" id="12_hn3qh"]
 [ext_resource type="PackedScene" uid="uid://dbrb56a80ruo2" path="res://Culorz/mage.tscn" id="13_wpnx2"]
-[ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="15_mbndy"]
 [ext_resource type="PackedScene" uid="uid://k4tpos4l53tx" path="res://Culorz/folder.tscn" id="16_l3ld5"]
 [ext_resource type="PackedScene" uid="uid://0qgftagkvqsa" path="res://Culorz/heart.tscn" id="17_8g88v"]
 [ext_resource type="PackedScene" uid="uid://dl04vuxqh7ead" path="res://Culorz/minigun.tscn" id="18_4n6jc"]
-[ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
+[ext_resource type="Script" path="res://culors_manager.gd" id="19_6oaph"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -113,11 +111,9 @@ position = Vector2(-79, 52)
 
 [node name="Violet" parent="Culors" instance=ExtResource("9_huic8")]
 position = Vector2(54, 63)
-safe_margin = 0.001
 
 [node name="Red" parent="Culors" instance=ExtResource("10_y0sk4")]
 position = Vector2(-47, 30)
-script = ExtResource("9_pfb0k")
 
 [node name="Green" parent="Culors" instance=ExtResource("11_huaef")]
 position = Vector2(42, 34)
@@ -150,9 +146,6 @@ visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MoveArea"]
 polygon = PackedVector2Array(-121, 4, 121, 4, 153, 98, -153, 98)
-
-[node name="Blob" parent="." instance=ExtResource("15_mbndy")]
-position = Vector2(-73, 21)
 
 [connection signal="pressed" from="Camera2D/UI/MixingUI/Button" to="Camera2D/UI/MixingUI/Button" method="_on_pressed"]
 [connection signal="timeout" from="CulorsManager/RallyCooldown" to="CulorsManager" method="allowrally"]
