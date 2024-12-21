@@ -6,7 +6,7 @@ var Mypersrandom
 var Timesincestart : float
 
 @export var culor : Color
-@export var speed = 20
+@export var speed = 40
 @export var health = 20
 @export var range = 40
 

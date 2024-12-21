@@ -27,7 +27,9 @@ func _input(event):
 func process_select(pos):
 	#Move
 	Selector.global_position = Vector2(round(pos.x),round(pos.y))
-	await selectGetTouching(pos)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
 	# We reset selection
 	selected_area_prio = -20
 	selected_area = null
@@ -47,11 +49,6 @@ func process_select(pos):
 			if Globalactor.get_selected_culors():
 				for Culor : BaseCulor in Globalactor.get_selected_culors():
 					Culor.move(pos)
-	
-
-func selectGetTouching(poes):
-	while not Selector.has_overlapping_areas() and poes == Selector.global_position:
-		await get_tree().process_frame
 
 func rally(pos,distance):
 	#start cooldown

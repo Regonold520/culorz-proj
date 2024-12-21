@@ -147,6 +147,7 @@ wait_time = 0.5
 
 [node name="SelectorArea" type="Area2D" parent="CulorsManager"]
 position = Vector2(-37, 19)
+priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CulorsManager/SelectorArea"]
 shape = SubResource("CircleShape2D_kmv3g")
