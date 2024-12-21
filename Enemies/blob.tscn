@@ -16,9 +16,8 @@ texture = ExtResource("1_44wpx")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_8l2v8")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
+[node name="EnemyArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_8l2v8")

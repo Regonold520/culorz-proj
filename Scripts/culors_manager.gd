@@ -3,8 +3,12 @@ extends Node2D
 var ringtexture = preload("res://ring.svg")
 var canrally = true
 var selected_area : Area2D = null
+var selected_area_prio = 0
 @onready var RallyCooldownTimer = $RallyCooldown
 @onready var MoveArea = $"../MoveArea"
+@onready var Selector = $SelectorArea
+
+
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -19,45 +23,35 @@ func _input(event):
 			if event.pressed == true:
 				process_select(get_global_mouse_position())
 
+
 func process_select(pos):
-	# Create Area2D we use to check overlapping
-	var NewArea = Area2D.new()
-	var NewBox = CollisionShape2D.new()
-	NewBox.shape = CircleShape2D.new()
-	NewArea.add_child(NewBox)
+	#Move
+	Selector.global_position = Vector2(round(pos.x),round(pos.y))
+	await selectGetTouching(pos)
+	# We reset selection
+	selected_area_prio = -20
 	selected_area = null
-	add_child(NewArea)
-	# Connect area to a function
-	NewArea.connect("area_entered",selectGetTouching)
 	
-	#We set the collision mask to be bit 2, that way enemies get processed first.
-	NewArea.collision_mask = 0b0010
-	# Move area to position, forcing the area_entered to get fired
-	NewArea.position = pos
-	await [NewArea.area_entered, await get_tree().create_timer(0.05).timeout]
+	for AreaInQuestion : Area2D in Selector.get_overlapping_areas():
+		if AreaInQuestion.priority > selected_area_prio:
+			selected_area = AreaInQuestion
+			selected_area_prio = AreaInQuestion.priority
+	
 	if selected_area:
 		if selected_area.get_parent() is BaseEnemy:
 			if Globalactor.get_selected_culors():
 				for Culor : BaseCulor in Globalactor.get_selected_culors():
 					Culor.target(selected_area.get_parent())
 			return
-	
-	
-	
-	#We set the collision mask to be bit 1, so then its movement
-	NewArea.collision_mask = 0b0001
-	# Move area to position, forcing the area_entered to get fired
-	NewArea.position = pos
-	await [NewArea.area_entered, await get_tree().create_timer(0.05).timeout]
-	if selected_area == MoveArea:
-		
-		if Globalactor.get_selected_culors():
-			for Culor : BaseCulor in Globalactor.get_selected_culors():
-				Culor.move(pos)
+		if selected_area == MoveArea:
+			if Globalactor.get_selected_culors():
+				for Culor : BaseCulor in Globalactor.get_selected_culors():
+					Culor.move(pos)
 	
 
-func selectGetTouching(toucher):
-	selected_area = toucher
+func selectGetTouching(poes):
+	while not Selector.has_overlapping_areas() and poes == Selector.global_position:
+		await get_tree().process_frame
 
 func rally(pos,distance):
 	#start cooldown

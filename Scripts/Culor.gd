@@ -51,7 +51,6 @@ func deselect():
 func move(pos : Vector2):
 	targetposition = Vector2(round(pos.x),round(pos.y))
 	targetcutoff = 0
-	print("lesgo")
 
 func target(Enemy : BaseEnemy):
 	move(Enemy.global_position)

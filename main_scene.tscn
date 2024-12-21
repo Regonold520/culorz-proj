@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=18 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://0qgftagkvqsa" path="res://Culorz/heart.tscn" id="17_8g88v"]
 [ext_resource type="PackedScene" uid="uid://dl04vuxqh7ead" path="res://Culorz/minigun.tscn" id="18_4n6jc"]
 [ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmv3g"]
+radius = 2.0
 
 [node name="MainScene" type="Node2D"]
 
@@ -142,11 +145,19 @@ script = ExtResource("19_6oaph")
 [node name="RallyCooldown" type="Timer" parent="CulorsManager"]
 wait_time = 0.5
 
+[node name="SelectorArea" type="Area2D" parent="CulorsManager"]
+position = Vector2(-37, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CulorsManager/SelectorArea"]
+shape = SubResource("CircleShape2D_kmv3g")
+debug_color = Color(0.956307, 0.130976, 0.417223, 0.42)
+
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(122, -1)
+position = Vector2(-42.667, 57.667)
 
 [node name="MoveArea" type="Area2D" parent="."]
-visible = false
+z_index = -1
+priority = -1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MoveArea"]
 polygon = PackedVector2Array(-121, 4, 121, 4, 153, 98, -153, 98)
