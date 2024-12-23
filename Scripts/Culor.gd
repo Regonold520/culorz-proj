@@ -27,6 +27,7 @@ func _ready():
 
 
 func setupculor():
+	#do technical stuff
 	safe_margin = 0.001
 	motion_mode = MotionMode.MOTION_MODE_FLOATING
 	Mypersrandom = rng.randi_range(1 , 99) # used for animations we dont want synced
@@ -41,6 +42,11 @@ func setupculor():
 	#if a extended has ready
 	if has_method("ready2"):
 		call("ready2")
+	
+	#add to culorz
+	add_to_group("Culorz")
+	
+	#set offset to first idle
 	
 	animoffset = rng.randf_range(1,2)
 
