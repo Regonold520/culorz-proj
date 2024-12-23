@@ -10,7 +10,6 @@ var Timesincestart : float # time since start
 @export var health = 20
 @export var attackRange = 60
 @export var attackCooldown = 2
-@export var CurrentState = "idle"
 
 var attackTimer = Timer.new()
 
@@ -19,6 +18,7 @@ var targetposition : Vector2
 var targetcutoff = 0
 var walkinganimstate = false
 var lastpos = Vector2(0,0)
+var animoffset = 0
 
 @onready var Animator = AnimationPlayer.new()
 
@@ -41,6 +41,8 @@ func setupculor():
 	#if a extended has ready
 	if has_method("ready2"):
 		call("ready2")
+	
+	animoffset = rng.randf_range(1,2)
 
 func runmove(delta):
 	if targetposition:
@@ -64,7 +66,10 @@ func _physics_process(delta):
 	velocity.move_toward(Vector2.DOWN,speed) * 34
 	
 	if !Animator.is_playing():
-		Animator.play("idle")
+		if animoffset <= 0:
+			Animator.play("idle")
+		else:
+			animoffset -= delta
 	
 	#visualize move with anim
 	if Vector2(round(position.x * 10) / 10,round(position.y * 10)/ 10)  != lastpos:
