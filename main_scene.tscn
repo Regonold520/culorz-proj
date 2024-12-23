@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=17 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
 [ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="8_1gy0p"]
 [ext_resource type="PackedScene" uid="uid://d0vi64yrcje4c" path="res://Culorz/axe.tscn" id="9_huic8"]
 [ext_resource type="Script" path="res://Scripts/mixing_ui.gd" id="9_nnif3"]
-[ext_resource type="Script" path="res://Scripts/Melee.gd" id="9_pfb0k"]
 [ext_resource type="Script" path="res://Scripts/confirm_mixing.gd" id="10_2s5of"]
 [ext_resource type="PackedScene" uid="uid://dawd5bl85b0d1" path="res://Culorz/boxer.tscn" id="10_y0sk4"]
 [ext_resource type="PackedScene" uid="uid://da45227mnif4u" path="res://Culorz/pistol.tscn" id="11_huaef"]
@@ -120,7 +119,6 @@ safe_margin = 0.001
 
 [node name="Red" parent="Culors" instance=ExtResource("10_y0sk4")]
 position = Vector2(-47, 30)
-script = ExtResource("9_pfb0k")
 
 [node name="Green" parent="Culors" instance=ExtResource("11_huaef")]
 position = Vector2(42, 34)

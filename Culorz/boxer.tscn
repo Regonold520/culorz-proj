@@ -1,14 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dawd5bl85b0d1"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_ykpbd"]
+[ext_resource type="Script" path="res://Scripts/Melee.gd" id="1_rv0ec"]
 [ext_resource type="Texture2D" uid="uid://ccpy20gypdcni" path="res://Culorz/boxer_chr.png" id="2_ewt8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 13)
 
 [node name="Red" type="CharacterBody2D"]
-script = ExtResource("1_ykpbd")
+script = ExtResource("1_rv0ec")
 culor = Color(0.67451, 0.196078, 0.196078, 1)
+attackRange = 15
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_ewt8i")
