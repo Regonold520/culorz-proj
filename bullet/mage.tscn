@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b43h0wjpafait"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_egrbg"]
+[ext_resource type="Texture2D" uid="uid://c121fyt1ym3ne" path="res://bullet/Mage.png" id="2_i50bt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
+size = Vector2(4, 4)
+
+[node name="Bullet" type="RigidBody2D"]
+script = ExtResource("1_egrbg")
+Movespeed = 80
+
+[node name="Pistol" type="Sprite2D" parent="."]
+position = Vector2(8.47033e-22, 8.47033e-22)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("2_i50bt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2hvor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2hvor")
+disabled = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

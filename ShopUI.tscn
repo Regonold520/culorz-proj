@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh2sixwgyxyfa"]
+
+[ext_resource type="Texture2D" uid="uid://c00uhl7u3btcg" path="res://table.png" id="1_65i6a"]
+[ext_resource type="Script" path="res://Scripts/ShopCommunicator.gd" id="1_f28y5"]
+[ext_resource type="Texture2D" uid="uid://ccpy20gypdcni" path="res://Culorz/boxer_chr.png" id="3_txdiy"]
+[ext_resource type="Script" path="res://Scripts/CulorShopDisplay.gd" id="4_k8qye"]
+[ext_resource type="Texture2D" uid="uid://cv3cea8gbkqt8" path="res://Culorz/dancer_chr.png" id="5_2p513"]
+[ext_resource type="Texture2D" uid="uid://2te4kbxv5ugb" path="res://Culorz/spear_chr.png" id="6_lj474"]
+[ext_resource type="Texture2D" uid="uid://i4qrfgi4jxmw" path="res://Culorz/axe_chr.png" id="7_7hh8h"]
+
+[node name="Shop" type="CanvasLayer"]
+script = ExtResource("1_f28y5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 498.0
+offset_bottom = 280.0
+
+[node name="Money" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 25.0
+text = "Prisms: 0"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0.548963, 0.548963, 0.548963, 1)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 170.0
+offset_right = 405.0
+offset_bottom = 268.0
+texture = ExtResource("1_65i6a")
+
+[node name="Red" type="Sprite2D" parent="Control"]
+position = Vector2(116, 193)
+scale = Vector2(2, 2)
+texture = ExtResource("3_txdiy")
+script = ExtResource("4_k8qye")
+
+[node name="Yellow" type="Sprite2D" parent="Control"]
+position = Vector2(165, 193)
+scale = Vector2(2, 2)
+texture = ExtResource("5_2p513")
+script = ExtResource("4_k8qye")
+
+[node name="Blue" type="Sprite2D" parent="Control"]
+position = Vector2(217, 193)
+scale = Vector2(2, 2)
+texture = ExtResource("6_lj474")
+script = ExtResource("4_k8qye")
+
+[node name="RandomCulor" type="Sprite2D" parent="Control"]
+position = Vector2(290, 194)
+scale = Vector2(2, 2)
+texture = ExtResource("7_7hh8h")
+script = ExtResource("4_k8qye")
+
+[node name="RedButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 211.0
+offset_right = 130.0
+offset_bottom = 242.0
+text = "1$"
+
+[node name="YellowButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 211.0
+offset_right = 178.0
+offset_bottom = 242.0
+text = "1$"
+
+[node name="BlueButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 211.0
+offset_right = 228.0
+offset_bottom = 242.0
+text = "1$"
+
+[node name="RandomButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 211.0
+offset_right = 303.0
+offset_bottom = 242.0
+text = "5$"
+
+[node name="Leave" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 4.0
+offset_right = 249.0
+offset_bottom = 40.0
+disabled = true
+text = "Continue"
+
+[connection signal="pressed" from="Control/RedButton" to="." method="_on_red_button_pressed"]
+[connection signal="pressed" from="Control/YellowButton" to="." method="_on_yellow_button_pressed"]
+[connection signal="pressed" from="Control/BlueButton" to="." method="_on_blue_button_pressed"]
+[connection signal="pressed" from="Control/RandomButton" to="." method="_on_random_button_pressed"]
+[connection signal="pressed" from="Control/Leave" to="." method="_on_button_pressed"]

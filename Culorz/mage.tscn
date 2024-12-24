@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbrb56a80ruo2"]
+[gd_scene load_steps=5 format=3 uid="uid://dbrb56a80ruo2"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_fggmn"]
+[ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_rtniu"]
+[ext_resource type="PackedScene" uid="uid://b43h0wjpafait" path="res://bullet/mage.tscn" id="2_ldqoi"]
 [ext_resource type="Texture2D" uid="uid://c73ue4gmfej8i" path="res://Culorz/mage_chr.png" id="2_tby1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 12)
 
 [node name="Ambur" type="CharacterBody2D"]
-script = ExtResource("1_fggmn")
+script = ExtResource("1_rtniu")
+damage = 5
+BulletType = ExtResource("2_ldqoi")
 culor = Color(0.87451, 0.576471, 0.14902, 1)
+speed = 35
+health = 25
+attackRange = 45
+attackSpeed = 0.9
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_tby1a")

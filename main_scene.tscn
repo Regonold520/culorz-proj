@@ -1,19 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=6 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
-[ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="8_1gy0p"]
-[ext_resource type="PackedScene" uid="uid://d0vi64yrcje4c" path="res://Culorz/axe.tscn" id="9_huic8"]
-[ext_resource type="Script" path="res://Scripts/mixing_ui.gd" id="9_nnif3"]
-[ext_resource type="Script" path="res://Scripts/confirm_mixing.gd" id="10_2s5of"]
-[ext_resource type="PackedScene" uid="uid://dawd5bl85b0d1" path="res://Culorz/boxer.tscn" id="10_y0sk4"]
-[ext_resource type="PackedScene" uid="uid://da45227mnif4u" path="res://Culorz/pistol.tscn" id="11_huaef"]
-[ext_resource type="Script" path="res://Scripts/ui_builder.gd" id="12_hn3qh"]
-[ext_resource type="PackedScene" uid="uid://dbrb56a80ruo2" path="res://Culorz/mage.tscn" id="13_wpnx2"]
-[ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="15_mbndy"]
-[ext_resource type="PackedScene" uid="uid://k4tpos4l53tx" path="res://Culorz/folder.tscn" id="16_l3ld5"]
-[ext_resource type="PackedScene" uid="uid://0qgftagkvqsa" path="res://Culorz/heart.tscn" id="17_8g88v"]
-[ext_resource type="PackedScene" uid="uid://dl04vuxqh7ead" path="res://Culorz/minigun.tscn" id="18_4n6jc"]
+[ext_resource type="PackedScene" uid="uid://bqpqpebrkg20e" path="res://MainMenuUI.tscn" id="4_pywfv"]
 [ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmv3g"]
@@ -36,104 +25,7 @@ texture = ExtResource("1_pamka")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_2l4j3")
 
-[node name="UI" type="CanvasLayer" parent="Camera2D"]
-
-[node name="UIBuilder" type="Node" parent="Camera2D/UI"]
-script = ExtResource("12_hn3qh")
-
-[node name="CulHolder" type="VBoxContainer" parent="Camera2D/UI"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(2.51674, 2.51674)
-
-[node name="MixingUI" type="Control" parent="Camera2D/UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 791.0
-offset_top = 446.0
-offset_right = 831.0
-offset_bottom = 486.0
-scale = Vector2(3.24726, 3.24726)
-script = ExtResource("9_nnif3")
-
-[node name="BG" type="ColorRect" parent="Camera2D/UI/MixingUI"]
-layout_mode = 0
-offset_left = -289.0
-offset_top = -134.0
-offset_right = 243.0
-offset_bottom = 136.0
-color = Color(1, 1, 1, 0.407843)
-
-[node name="BG2" type="ColorRect" parent="Camera2D/UI/MixingUI"]
-layout_mode = 0
-offset_left = 98.0
-offset_top = -125.0
-offset_right = 232.0
-offset_bottom = 127.0
-color = Color(0.67069, 0.67069, 0.67069, 1)
-
-[node name="GridContainer" type="GridContainer" parent="Camera2D/UI/MixingUI/BG2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 132.0
-offset_bottom = 44.0
-columns = 3
-
-[node name="BG3" type="ColorRect" parent="Camera2D/UI/MixingUI"]
-layout_mode = 0
-offset_left = -241.0
-offset_top = -125.0
-offset_right = -135.0
-offset_bottom = 127.0
-color = Color(0.67069, 0.67069, 0.67069, 1)
-
-[node name="POS1" type="Node2D" parent="Camera2D/UI/MixingUI"]
-position = Vector2(-18.7851, -46.5007)
-
-[node name="POS2" type="Node2D" parent="Camera2D/UI/MixingUI"]
-position = Vector2(-85.3026, 44.0371)
-
-[node name="POS3" type="Node2D" parent="Camera2D/UI/MixingUI"]
-position = Vector2(32.027, 44.0371)
-
-[node name="Button" type="Button" parent="Camera2D/UI/MixingUI"]
-layout_mode = 0
-offset_left = -51.12
-offset_top = 82.8391
-offset_right = 19.88
-offset_bottom = 113.839
-scale = Vector2(0.779813, 0.779813)
-text = "Confirm"
-script = ExtResource("10_2s5of")
-
 [node name="Culors" type="Node2D" parent="."]
-
-[node name="Vermilion" parent="Culors" instance=ExtResource("8_1gy0p")]
-position = Vector2(-79, 52)
-
-[node name="Violet" parent="Culors" instance=ExtResource("9_huic8")]
-position = Vector2(54, 63)
-safe_margin = 0.001
-
-[node name="Red" parent="Culors" instance=ExtResource("10_y0sk4")]
-position = Vector2(-47, 30)
-
-[node name="Green" parent="Culors" instance=ExtResource("11_huaef")]
-position = Vector2(42, 34)
-
-[node name="Ambur" parent="Culors" instance=ExtResource("13_wpnx2")]
-position = Vector2(1, 0)
-
-[node name="Folder" parent="Culors" instance=ExtResource("16_l3ld5")]
-position = Vector2(-23, 71)
-
-[node name="Heart" parent="Culors" instance=ExtResource("17_8g88v")]
-position = Vector2(33, 53)
-
-[node name="Minigun" parent="Culors" instance=ExtResource("18_4n6jc")]
-position = Vector2(96, 31)
 
 [node name="Threats" type="Node2D" parent="."]
 
@@ -161,8 +53,39 @@ priority = -1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MoveArea"]
 polygon = PackedVector2Array(-121, 4, 121, 4, 153, 98, -153, 98)
 
-[node name="Blob" parent="." instance=ExtResource("15_mbndy")]
-position = Vector2(-73, 21)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[connection signal="pressed" from="Camera2D/UI/MixingUI/Button" to="Camera2D/UI/MixingUI/Button" method="_on_pressed"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-13, -1)
+scale = Vector2(2.3, 1.15)
+polygon = PackedVector2Array(-46.9565, 4.34783, -60.8696, 86.087, 72.1739, 86.087, 58.2609, 4.34783, 80.8696, 4.78261, 88.2609, 104.783, -74.7826, 102.174, -53.913, -31.7391, 58.6957, -29.1304, 58.2609, 4.34783)
+
+[node name="MainMenu" parent="." instance=ExtResource("4_pywfv")]
+
+[node name="CulorUI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" type="Control" parent="CulorUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 418.0
+offset_right = 498.0
+offset_bottom = 280.0
+
+[node name="GridContainer" type="GridContainer" parent="CulorUI/Control"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 280.0
+columns = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CulorUI"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32549)
+
 [connection signal="timeout" from="CulorsManager/RallyCooldown" to="CulorsManager" method="allowrally"]

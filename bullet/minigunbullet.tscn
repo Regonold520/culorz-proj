@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bob6gt3klmmwg"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_1jdpx"]
+[ext_resource type="Texture2D" uid="uid://binfld4y7bbaq" path="res://bullet/Minigun.png" id="2_txudv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
+size = Vector2(2, 2)
+
+[node name="Bullet" type="RigidBody2D"]
+script = ExtResource("1_1jdpx")
+Movespeed = 80
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2hvor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2hvor")
+disabled = true
+
+[node name="Minigun" type="Sprite2D" parent="."]
+texture = ExtResource("2_txudv")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

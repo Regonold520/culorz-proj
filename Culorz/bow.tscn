@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cafrjnpwcqr3"]
+[gd_scene load_steps=5 format=3 uid="uid://cafrjnpwcqr3"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_mbbhv"]
+[ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_wyaq1"]
+[ext_resource type="PackedScene" uid="uid://doc2ioendebiu" path="res://bullet/arrow.tscn" id="2_ielr1"]
 [ext_resource type="Texture2D" uid="uid://c1b3nlgasubhx" path="res://Culorz/bow_chr.png" id="2_ox4vg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 12)
 
 [node name="Vermilion" type="CharacterBody2D"]
-script = ExtResource("1_mbbhv")
+script = ExtResource("1_wyaq1")
+damage = 6
+BulletType = ExtResource("2_ielr1")
 culor = Color(0.764706, 0.309804, 0.172549, 1)
+attackSpeed = 0.75
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_ox4vg")

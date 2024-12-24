@@ -1,14 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6uv0j3633wft"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_vg13l"]
+[ext_resource type="Script" path="res://Scripts/Melee.gd" id="1_qshbv"]
 [ext_resource type="Texture2D" uid="uid://w0xoc2mtfht8" path="res://Culorz/rock_chr.png" id="2_p0imk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 9)
 
 [node name="Gray" type="CharacterBody2D"]
-script = ExtResource("1_vg13l")
+script = ExtResource("1_qshbv")
+damage = 1
 culor = Color(0.411765, 0.415686, 0.415686, 1)
+speed = 10
+health = 50
+attackRange = 20
+attackSpeed = 0.1
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_p0imk")

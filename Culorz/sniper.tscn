@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmgynr7o8hfkf"]
+[gd_scene load_steps=5 format=3 uid="uid://bmgynr7o8hfkf"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_oaamp"]
+[ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_4ccd3"]
 [ext_resource type="Texture2D" uid="uid://b0in3wbgi3vjr" path="res://Culorz/sniper_chr.png" id="2_qgs6r"]
+[ext_resource type="PackedScene" uid="uid://cf431qko6ns13" path="res://bullet/sniper.tscn" id="2_t3g3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(16, 12)
 
 [node name="Teal" type="CharacterBody2D"]
-script = ExtResource("1_oaamp")
+script = ExtResource("1_4ccd3")
+damage = 8
+BulletType = ExtResource("2_t3g3i")
 culor = Color(0.372549, 0.894118, 0.827451, 1)
+speed = 20
+health = 5
+attackRange = 100
+attackSpeed = 0.25
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_qgs6r")

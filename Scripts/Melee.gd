@@ -4,20 +4,30 @@ class_name MeleeCulor
 @export var damage = 4
 
 var targeted = false
-var TargetEnemy
+var TargetEnemy : BaseEnemy = null
+
+
+func move(pos : Vector2, resetenemy = true):
+	# round target position
+	targetposition = Vector2(round(pos.x),round(pos.y))
+	
+	if resetenemy:
+		targetcutoff = 1
+		TargetEnemy = null
 
 func target(Enemy : BaseEnemy):
-	move(Enemy.global_position)
+	move(Enemy.global_position, false) #move towards enemy, dont reset.
 	targetcutoff = attackRange
+	TargetEnemy = Enemy
 
-func _ready():
-	setupculor()
-	
-	attackTimer.wait_time = attackCooldown
-	attackTimer.timeout.connect(attacktimerend)
-	attackTimer.start()
+func _process(delta):
+	if TargetEnemy:
+		move(TargetEnemy.global_position, false)  #move towards enemy, dont reset.
+		if position.distance_to(TargetEnemy.global_position) <= attackRange: #if within range, play attack_melee
+			if abs(position.angle_to_point(TargetEnemy.global_position)) <= deg_to_rad(90):
+				Animator.play("attack_melee_flipped")
+			else:
+				Animator.play("attack_melee")
 
-func attacktimerend():
-	await loopUntilRange()
-	Animator.play("attack_melee")
-	attackTimer.start()
+func animation_hit(): #activated by the animation.
+	TargetEnemy.hit(damage,self)

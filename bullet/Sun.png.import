@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2te4kbxv5ugb"
-path="res://.godot/imported/bloo_chr.png-5e084f94234ee36919a7acc76ba3086d.ctex"
+uid="uid://bkom0cogektex"
+path="res://.godot/imported/Sun.png-7998a3ad9de4fe3426d82cf34d59ef71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Culorz/bloo_chr.png"
-dest_files=["res://.godot/imported/bloo_chr.png-5e084f94234ee36919a7acc76ba3086d.ctex"]
+source_file="res://bullet/Sun.png"
+dest_files=["res://.godot/imported/Sun.png-7998a3ad9de4fe3426d82cf34d59ef71.ctex"]
 
 [params]
 

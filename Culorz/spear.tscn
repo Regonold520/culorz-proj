@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn1gygi7blsxd"]
+[gd_scene load_steps=5 format=3 uid="uid://bn1gygi7blsxd"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_rgb1j"]
-[ext_resource type="Texture2D" uid="uid://2te4kbxv5ugb" path="res://Culorz/bloo_chr.png" id="2_6h6ug"]
+[ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_wy31w"]
+[ext_resource type="Texture2D" uid="uid://2te4kbxv5ugb" path="res://Culorz/spear_chr.png" id="2_6h6ug"]
+[ext_resource type="PackedScene" uid="uid://doudfn0r5ss5h" path="res://bullet/spear.tscn" id="2_idicb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 12)
 
 [node name="Bloo" type="CharacterBody2D"]
-script = ExtResource("1_rgb1j")
+script = ExtResource("1_wy31w")
+damage = 8
+BulletType = ExtResource("2_idicb")
 culor = Color(0.388235, 0.607843, 1, 1)
+speed = 45
+health = 30
+attackSpeed = 0.5
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_6h6ug")

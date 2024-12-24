@@ -36,6 +36,11 @@ project/assembly_name="Culorz"
 Selected_Culor=""
 Culorz=""
 
+[gui]
+
+theme/custom="res://DefaultTheme.tres"
+theme/custom_font="res://Pixeled.ttf"
+
 [input]
 
 Select={

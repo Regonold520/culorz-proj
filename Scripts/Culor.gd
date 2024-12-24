@@ -9,12 +9,13 @@ var Timesincestart : float # time since start
 @export var speed = 40
 @export var health = 20
 @export var attackRange = 60
-@export var attackCooldown = 2
+@export var attackSpeed = 1.0
 
 var attackTimer = Timer.new()
 
 var rng = RandomNumberGenerator.new()
 var targetposition : Vector2
+
 var targetcutoff = 0
 var walkinganimstate = false
 var lastpos = Vector2(0,0)
@@ -25,8 +26,25 @@ var animoffset = 0
 func _ready():
 	setupculor()
 
+func die():
+	if $Texture:
+		$Texture.queue_free()
+		var CoolParticles = preload("res://death_particles.tscn").instantiate()
+		CoolParticles.color = culor
+		add_child(CoolParticles)
+		CoolParticles.emitting = true
+		await CoolParticles.finished
+		queue_free()
+
+func hit(damage, damager : BaseEnemy):
+	velocity -= position.direction_to(damager.position) * 10
+	health -= damage
+	if health <= 0:
+		damager.Target = null
+		die()
 
 func setupculor():
+	
 	#do technical stuff
 	safe_margin = 0.001
 	motion_mode = MotionMode.MOTION_MODE_FLOATING
@@ -35,6 +53,7 @@ func setupculor():
 	#setup animator
 	add_child(Animator)
 	Animator.add_animation_library("",load("res://CulorAnimations.tres"))
+	Animator.speed_scale = attackSpeed
 	
 	#setup attack timer
 	add_child(attackTimer)
@@ -52,13 +71,14 @@ func setupculor():
 
 func runmove(delta):
 	if targetposition:
-		if position.distance_to(targetposition) >= targetcutoff:
-			velocity = velocity.move_toward(targetposition - position,speed * delta)
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO,speed * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO,speed * delta)
+		if global_position.distance_to(targetposition) >= targetcutoff:
+			var direction = (targetposition - global_position).normalized()
+			velocity = direction * speed
 	move_and_slide()
+	velocity = velocity.move_toward(Vector2.ZERO,delta * (0.25 * 50))
+	if global_position.distance_to(targetposition) <= targetcutoff:
+		velocity = Vector2()
+		  # Stop moving
 
 func loopUntilRange():
 	while position.distance_to(targetposition) >= targetcutoff:
@@ -67,9 +87,10 @@ func loopUntilRange():
 	
 
 func _physics_process(delta):
+	if health <= 0:
+		return
 	#MOVE!!
 	runmove(delta)
-	velocity.move_toward(Vector2.DOWN,speed) * 34
 	
 	if !Animator.is_playing():
 		if animoffset <= 0:
@@ -81,17 +102,18 @@ func _physics_process(delta):
 	if Vector2(round(position.x * 10) / 10,round(position.y * 10)/ 10)  != lastpos:
 		if !walkinganimstate:
 			walkinganimstate = true
-			Animator.play("walk")
+			#Animator.play("walk")
 	else:
 		if walkinganimstate:
 			walkinganimstate = false
-			Animator.play("walkend",-1,1,true)
+			#Animator.play("walkend",-1,1,true)
 	
 	if velocity.x != 0:
 		if sign(velocity.x) == -1:
-			$Texture.flip_h = true
+			$Texture.scale.x = -1
+			
 		else:
-			$Texture.flip_h = false
+			$Texture.scale.x = 1
 	
 	# run modulation animation for a selected culor
 	Timesincestart += delta
@@ -113,7 +135,7 @@ func deselect():
 
 func move(pos : Vector2):
 	targetposition = Vector2(round(pos.x),round(pos.y))
-	targetcutoff = 0
+	targetcutoff = 1
 
 func target(Enemy : BaseEnemy):
 	move(Enemy.global_position)

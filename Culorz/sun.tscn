@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6m85il2mtr4t"]
+[gd_scene load_steps=5 format=3 uid="uid://b6m85il2mtr4t"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_q3ogd"]
+[ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_g53n1"]
+[ext_resource type="PackedScene" uid="uid://d0tgh4bwjpa6t" path="res://bullet/sun.tscn" id="2_jr4m0"]
 [ext_resource type="Texture2D" uid="uid://duna41un6ky6y" path="res://Culorz/sun_chr.png" id="2_xk0ww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(10, 11)
 
 [node name="White" type="CharacterBody2D"]
-script = ExtResource("1_q3ogd")
+script = ExtResource("1_g53n1")
+BulletType = ExtResource("2_jr4m0")
 culor = Color(1, 1, 1, 1)
+speed = 35
+health = 15
+attackRange = 70
+attackSpeed = 1.25
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_xk0ww")

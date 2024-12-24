@@ -1,18 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://csv41wvplh51e"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_fp2fd"]
-[ext_resource type="Texture2D" uid="uid://be35w031nt3hx" path="res://Culorz/moon_chr.png" id="2_qash0"]
+[ext_resource type="Script" path="res://Scripts/Melee.gd" id="1_igytx"]
+[ext_resource type="Texture2D" uid="uid://be35w031nt3hx" path="res://Culorz/ninja_chr.png" id="2_qash0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 12)
 
 [node name="Black" type="CharacterBody2D"]
-script = ExtResource("1_fp2fd")
+script = ExtResource("1_igytx")
+damage = 6
+speed = 50
+attackRange = 25
+attackSpeed = 1.65
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_qash0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 modulate = Color(1, 0, 1, 1)
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_uqd2g")

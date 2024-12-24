@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf431qko6ns13"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_wu7mh"]
+[ext_resource type="Texture2D" uid="uid://cstmq4dd5xtjw" path="res://bullet/Sniper.png" id="2_yh7ge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
+size = Vector2(4, 2)
+
+[node name="Bullet" type="RigidBody2D"]
+script = ExtResource("1_wu7mh")
+Movespeed = 100
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2hvor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2hvor")
+disabled = true
+
+[node name="Minigun" type="Sprite2D" parent="."]
+texture = ExtResource("2_yh7ge")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

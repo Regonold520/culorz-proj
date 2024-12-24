@@ -1,14 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfnr6vp186w27"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_t32nu"]
+[ext_resource type="Script" path="res://Scripts/Melee.gd" id="1_knmob"]
 [ext_resource type="Texture2D" uid="uid://dpqlli6n5hyj5" path="res://Culorz/hammer_chr.png" id="2_q7u13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 11)
 
 [node name="Hammer" type="CharacterBody2D"]
-script = ExtResource("1_t32nu")
+script = ExtResource("1_knmob")
+damage = 5
 culor = Color(0.568627, 0.227451, 0.529412, 1)
+speed = 30
+attackRange = 27
+attackSpeed = 1.5
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_q7u13")

@@ -1,19 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://da45227mnif4u"]
+[gd_scene load_steps=6 format=3 uid="uid://da45227mnif4u"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_ge7wc"]
+[ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_7qxk5"]
 [ext_resource type="Texture2D" uid="uid://ch6mqe2eia8ba" path="res://Culorz/pistol_chr.png" id="2_4ujff"]
+[ext_resource type="PackedScene" uid="uid://dmlcchmtb4ub6" path="res://bullet/pistolbullet.tscn" id="2_j76di"]
+[ext_resource type="AnimationLibrary" uid="uid://h368vhnuvmcd" path="res://CulorAnimations.tres" id="3_h4r3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 12)
 
 [node name="Green" type="CharacterBody2D"]
-script = ExtResource("1_ge7wc")
+script = ExtResource("1_7qxk5")
+BulletType = ExtResource("2_j76di")
 culor = Color(0.415686, 0.745098, 0.188235, 1)
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_4ujff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_uqd2g")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"CulorAnimations": ExtResource("3_h4r3p")
+}
