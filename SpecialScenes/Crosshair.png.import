@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5tstjfj2frl4"
-path="res://.godot/imported/CulorzLogo.png-2f8e687b9b715d260396654b44c59335.ctex"
+uid="uid://ckaxdj7je08m5"
+path="res://.godot/imported/Crosshair.png-71b5eff14c9e3cd757d3028de0890248.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CulorzLogo.png"
-dest_files=["res://.godot/imported/CulorzLogo.png-2f8e687b9b715d260396654b44c59335.ctex"]
+source_file="res://SpecialScenes/Crosshair.png"
+dest_files=["res://.godot/imported/Crosshair.png-71b5eff14c9e3cd757d3028de0890248.ctex"]
 
 [params]
 

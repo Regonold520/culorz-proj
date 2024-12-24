@@ -2,6 +2,7 @@ extends Node
 
 
 var Prisms = 10
+var CurrentWave = 1
 
 var tweenPos
 var zoomPos
@@ -64,6 +65,8 @@ func deployment():
 	DeployMenu.LeaveDeployment.connect(gameplayBegin)
 	
 	get_parent().get_child(1).add_child(DeployMenu)
+	
+	get_parent().get_child(1).find_child("WaveManager")._setup()
 	
 func gameplayBegin():
 	UIPHASE = "Gameplay"
