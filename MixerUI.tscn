@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy6ujyuwhthch"]
+[gd_scene load_steps=5 format=3 uid="uid://dy6ujyuwhthch"]
 
 [ext_resource type="Script" path="res://mixer_ui.gd" id="1_q3ggt"]
-[ext_resource type="Texture2D" uid="uid://i4qrfgi4jxmw" path="res://Culorz/axe_chr.png" id="1_whkcx"]
 [ext_resource type="Script" path="res://Scripts/CulorShopDisplay.gd" id="2_05owq"]
 
 [sub_resource type="Gradient" id="Gradient_kmev6"]
@@ -60,15 +59,16 @@ offset_right = 360.0
 offset_bottom = 120.0
 texture = SubResource("GradientTexture1D_f65hw")
 
-[node name="ColorRect5" type="ColorRect" parent="Control"]
+[node name="Bridge" type="ColorRect" parent="Control"]
 layout_mode = 0
 offset_left = 208.0
-offset_top = 120.0
+offset_top = 128.0
 offset_right = 216.0
-offset_bottom = 160.0
-color = Color(0.498039, 0.498039, 0.498039, 1)
+offset_bottom = 152.0
+color = Color(0, 0, 0, 1)
 
 [node name="Leave" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 167.0
 offset_top = 4.0
 offset_right = 249.0
@@ -78,19 +78,16 @@ text = "Continue"
 [node name="Culor1" type="Sprite2D" parent="Control"]
 position = Vector2(116, 76)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_whkcx")
 script = ExtResource("2_05owq")
 
 [node name="Culor2" type="Sprite2D" parent="Control"]
 position = Vector2(304, 76)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_whkcx")
 script = ExtResource("2_05owq")
 
 [node name="Culor3" type="Sprite2D" parent="Control"]
 position = Vector2(212, 190)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_whkcx")
 script = ExtResource("2_05owq")
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

@@ -96,6 +96,14 @@ func CulorButtonPressThingamajig():
 		if len(MixerItems) < 2:
 			MixerItems.append(button)
 			button.disabled
+			var GradientE : Gradient = MixerMenu.find_child("Gradient").texture.gradient
+			
+			
+			if MixerItems[0]:
+				
+				GradientE.set_color(0, Color(assignedcolors[MixerItems[0].get_meta("Name")]) )
+				if len(MixerItems) == 2:
+					GradientE.set_color(1, Color(assignedcolors[MixerItems[1].get_meta("Name")]) )
 		else:
 			var NewSound = AudioStreamPlayer.new()
 			NewSound.stream = preload("res://Error.mp3")
