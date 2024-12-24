@@ -9,10 +9,13 @@ size = Vector2(14, 12)
 
 [node name="Ambur" type="CharacterBody2D"]
 script = ExtResource("1_rtniu")
+Maxdamage = 5
 damage = 5
 BulletType = ExtResource("2_ldqoi")
 culor = Color(0.87451, 0.576471, 0.14902, 1)
+Maxspeed = 35
 speed = 35
+Maxhealth = 25
 health = 25
 attackRange = 45
 attackSpeed = 0.9

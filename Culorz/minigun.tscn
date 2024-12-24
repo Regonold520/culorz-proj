@@ -9,6 +9,7 @@ size = Vector2(12, 11)
 
 [node name="Minigun" type="CharacterBody2D"]
 script = ExtResource("1_vjkj4")
+Maxdamage = 1
 damage = 1
 BulletType = ExtResource("2_13kta")
 culor = Color(0.392157, 0.819608, 0.505882, 1)

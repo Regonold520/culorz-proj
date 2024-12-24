@@ -1,8 +1,12 @@
 extends BaseCulor
 class_name SupportCulor
 
+@export var Maxdamage = 4
 @export var damage = 4
+
 @export var friendlyTarget = false
+
+var TargetEnemy
 
 var targeted = false
 var Target = null
@@ -17,7 +21,7 @@ func move(pos : Vector2, resetenemy = true):
 
 func target(Enemy):
 	move(Enemy.global_position, false) #move towards enemy, dont reset.
-	targetcutoff = attackRange
+	targetcutoff = attackRange / 2
 	Target = Enemy
 
 func _process(delta):
@@ -30,17 +34,15 @@ func _process(delta):
 				Animator.play("attack_melee")
 
 func animation_hit():
-	if Target != null:
-		pass
+	pass
 
 func get_enemies():
 	var distance = 999
-	var distanceholder = null
+	var distanceholder = []
 	for Culor in get_tree().get_nodes_in_group("Enemies"):
 		if position.distance_to(Culor.position) <= attackRange:
-			if distance >= position.distance_to(Culor.position):
-				distance = position.distance_to(Culor.position)
-				distanceholder = Culor
+			distanceholder.append(Culor)
+			distance = 0
 	if distance == 999:
 		return false
 	else:
@@ -48,12 +50,10 @@ func get_enemies():
 		
 func get_culorz():
 	var distance = 999
-	var distanceholder = null
+	var distanceholder = []
 	for Culor in get_tree().get_nodes_in_group("Culorz"):
 		if position.distance_to(Culor.position) <= attackRange:
-			if distance >= position.distance_to(Culor.position):
-				distance = position.distance_to(Culor.position)
-				distanceholder = Culor
+			distanceholder.append(Culor)
 	if distance == 999:
 		return false
 	else:

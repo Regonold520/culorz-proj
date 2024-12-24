@@ -1,7 +1,9 @@
 extends BaseCulor
 class_name RangedCulor
 
+@export var Maxdamage = 4
 @export var damage = 4
+
 @export var BulletType : PackedScene
 
 var targeted = false

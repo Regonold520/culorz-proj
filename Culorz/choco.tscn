@@ -8,9 +8,12 @@ size = Vector2(14, 12)
 
 [node name="Brown" type="CharacterBody2D"]
 script = ExtResource("1_hpjdw")
+Maxdamage = 20
 damage = 20
 culor = Color(0.560784, 0.337255, 0.231373, 1)
+Maxspeed = 50
 speed = 50
+Maxhealth = 5
 health = 5
 attackRange = 25
 attackSpeed = 5.0

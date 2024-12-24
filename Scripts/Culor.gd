@@ -6,8 +6,13 @@ var Mypersrandom # used for animations we dont want synced
 var Timesincestart : float # time since start
 
 @export var culor : Color
+@export var Maxspeed = 40
 @export var speed = 40
+
+@export var Maxhealth = 20
 @export var health = 20
+
+
 @export var attackRange = 60
 @export var attackSpeed = 1.0
 
@@ -22,6 +27,9 @@ var lastpos = Vector2(0,0)
 var animoffset = 0
 
 @onready var Animator = AnimationPlayer.new()
+
+func add_modifier(property, multiplier):
+	set(property, get(property) * multiplier)
 
 func _ready():
 	setupculor()

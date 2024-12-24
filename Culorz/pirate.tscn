@@ -8,9 +8,12 @@ size = Vector2(14, 10)
 
 [node name="Orange" type="CharacterBody2D"]
 script = ExtResource("1_x3adh")
+Maxdamage = 2
 damage = 2
 culor = Color(0.87451, 0.443137, 0.14902, 1)
+Maxspeed = 50
 speed = 50
+Maxhealth = 25
 health = 25
 attackRange = 25
 attackSpeed = 1.5

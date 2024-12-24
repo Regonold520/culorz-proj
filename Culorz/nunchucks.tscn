@@ -8,8 +8,10 @@ size = Vector2(14, 11)
 
 [node name="Chartreuse" type="CharacterBody2D"]
 script = ExtResource("1_jhsdh")
+Maxdamage = 2
 damage = 2
 culor = Color(0.6, 0.898039, 0.313726, 1)
+Maxhealth = 15
 health = 15
 attackRange = 30
 attackSpeed = 1.5

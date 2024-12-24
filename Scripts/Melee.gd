@@ -1,6 +1,7 @@
 extends BaseCulor
 class_name MeleeCulor
 
+@export var Maxdamage = 4
 @export var damage = 4
 
 var targeted = false

@@ -11,8 +11,6 @@ size = Vector2(10, 11)
 script = ExtResource("1_g53n1")
 BulletType = ExtResource("2_jr4m0")
 culor = Color(1, 1, 1, 1)
-speed = 35
-health = 15
 attackRange = 70
 attackSpeed = 1.25
 

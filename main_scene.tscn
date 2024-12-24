@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=13 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="4_2hnsr"]
 [ext_resource type="PackedScene" uid="uid://bqpqpebrkg20e" path="res://MainMenuUI.tscn" id="4_pywfv"]
 [ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="5_iwdsn"]
+[ext_resource type="PackedScene" uid="uid://ce4nstrl2yq12" path="res://Culorz/grass.tscn" id="5_tehx1"]
 [ext_resource type="Script" path="res://wave_manager.gd" id="6_a7uf1"]
+[ext_resource type="PackedScene" uid="uid://3ox2fytgb40y" path="res://Culorz/bubble.tscn" id="6_rigvm"]
+[ext_resource type="Texture2D" uid="uid://dsiqiagsj4ghb" path="res://Bosses/la’bombuss_boss.png" id="11_faxyv"]
 [ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmv3g"]
@@ -32,16 +35,39 @@ script = ExtResource("3_2l4j3")
 
 [node name="Culors" type="Node2D" parent="."]
 
-[node name="Fire" parent="Culors" instance=ExtResource("3_56qd1")]
-position = Vector2(0, 41)
-
 [node name="Vermilion" parent="Culors" instance=ExtResource("4_2hnsr")]
 position = Vector2(18, 22)
+damage = 4
+
+[node name="Fire" parent="Culors" instance=ExtResource("3_56qd1")]
+position = Vector2(-7, 73)
+attackRange = 80
+
+[node name="Grass" parent="Culors" instance=ExtResource("5_tehx1")]
+position = Vector2(-23, 79)
+
+[node name="Bubble" parent="Culors" instance=ExtResource("6_rigvm")]
+position = Vector2(58, 60)
 
 [node name="Threats" type="Node2D" parent="."]
 
 [node name="Blob" parent="Threats" instance=ExtResource("5_iwdsn")]
 position = Vector2(-102, 20)
+
+[node name="Blob2" parent="Threats" instance=ExtResource("5_iwdsn")]
+position = Vector2(-86, 11)
+
+[node name="Blob3" parent="Threats" instance=ExtResource("5_iwdsn")]
+position = Vector2(-114, 36)
+
+[node name="Blob4" parent="Threats" instance=ExtResource("5_iwdsn")]
+position = Vector2(-67, 11)
+
+[node name="Blob5" parent="Threats" instance=ExtResource("5_iwdsn")]
+position = Vector2(-111, 54)
+
+[node name="Blob6" parent="Threats" instance=ExtResource("5_iwdsn")]
+position = Vector2(-86, 36)
 
 [node name="CulorsManager" type="Node2D" parent="."]
 script = ExtResource("19_6oaph")
@@ -103,5 +129,17 @@ color = Color(0, 0, 0, 0.32549)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("6_a7uf1")
+
+[node name="La’bombussBoss" type="Sprite2D" parent="."]
+position = Vector2(67, -45)
+texture = ExtResource("11_faxyv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -123.0
+offset_top = -33.0
+offset_right = -17.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "hi sir fungus"
 
 [connection signal="timeout" from="CulorsManager/RallyCooldown" to="CulorsManager" method="allowrally"]

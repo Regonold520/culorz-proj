@@ -8,7 +8,9 @@ size = Vector2(14, 12)
 
 [node name="Black" type="CharacterBody2D"]
 script = ExtResource("1_igytx")
+Maxdamage = 6
 damage = 6
+Maxspeed = 50
 speed = 50
 attackRange = 25
 attackSpeed = 1.65

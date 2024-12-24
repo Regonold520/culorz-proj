@@ -1,12 +1,18 @@
 extends CharacterBody2D
 class_name BaseEnemy
 
+@export var Maxspeed = 20
 @export var speed = 20
+
+@export var Maxhealth = 20
 @export var health = 20
+
+@export var Maxdamage = 1
+@export var damage = 1
+
 @export var range = 20
 @export var ViewRange = 50
 @export var ParticleColor : Color
-@export var damage = 1
 
 
 @onready var Animator = AnimationPlayer.new()
@@ -16,6 +22,14 @@ var Target = null
 var TargetPosition
 var Targetcutoff
 var deltacount = 0
+
+func add_modifier(property, multiplier, duration):
+	set(property, get("Max" + property) * multiplier)
+	
+	var timer = get_tree().create_timer(duration)
+	await timer.timeout
+	
+	set(property, get("Max" + property))
 
 func _ready():
 	add_child(Animator)
@@ -44,6 +58,9 @@ func hit(damage, damager : BaseCulor):
 	velocity -= position.direction_to(damager.position) * 10
 	health -= damage
 	if health <= 0:
+		if "ring" in damager:
+			if damager.ring != null:
+				damager.ring.queue_free()
 		damager.TargetEnemy = null
 		die()
 

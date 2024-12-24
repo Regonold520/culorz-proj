@@ -35,6 +35,7 @@ project/assembly_name="Culorz"
 
 Selected_Culor=""
 Culorz=""
+Enemies=""
 
 [gui]
 

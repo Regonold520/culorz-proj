@@ -8,8 +8,10 @@ size = Vector2(14, 11)
 
 [node name="Hammer" type="CharacterBody2D"]
 script = ExtResource("1_knmob")
+Maxdamage = 5
 damage = 5
 culor = Color(0.568627, 0.227451, 0.529412, 1)
+Maxspeed = 30
 speed = 30
 attackRange = 27
 attackSpeed = 1.5

@@ -8,10 +8,9 @@ size = Vector2(14, 9)
 
 [node name="Gray" type="CharacterBody2D"]
 script = ExtResource("1_qshbv")
+Maxdamage = 1
 damage = 1
 culor = Color(0.411765, 0.415686, 0.415686, 1)
-speed = 10
-health = 50
 attackRange = 20
 attackSpeed = 0.1
 

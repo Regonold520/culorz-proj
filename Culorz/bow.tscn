@@ -9,6 +9,7 @@ size = Vector2(14, 12)
 
 [node name="Vermilion" type="CharacterBody2D"]
 script = ExtResource("1_wyaq1")
+Maxdamage = 6
 damage = 6
 BulletType = ExtResource("2_ielr1")
 culor = Color(0.764706, 0.309804, 0.172549, 1)

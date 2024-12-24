@@ -9,10 +9,13 @@ size = Vector2(16, 12)
 
 [node name="Teal" type="CharacterBody2D"]
 script = ExtResource("1_4ccd3")
+Maxdamage = 8
 damage = 8
 BulletType = ExtResource("2_t3g3i")
 culor = Color(0.372549, 0.894118, 0.827451, 1)
+Maxspeed = 20
 speed = 20
+Maxhealth = 5
 health = 5
 attackRange = 100
 attackSpeed = 0.25

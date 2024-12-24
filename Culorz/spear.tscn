@@ -9,10 +9,13 @@ size = Vector2(14, 12)
 
 [node name="Bloo" type="CharacterBody2D"]
 script = ExtResource("1_wy31w")
+Maxdamage = 8
 damage = 8
 BulletType = ExtResource("2_idicb")
 culor = Color(0.388235, 0.607843, 1, 1)
+Maxspeed = 45
 speed = 45
+Maxhealth = 30
 health = 30
 attackSpeed = 0.5
 

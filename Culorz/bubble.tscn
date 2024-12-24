@@ -11,8 +11,6 @@ size = Vector2(12, 10)
 script = ExtResource("1_v6ftn")
 BulletType = ExtResource("2_0kkkt")
 culor = Color(0.380392, 0.74902, 0.913725, 1)
-speed = 30
-health = 10
 attackSpeed = 3.0
 
 [node name="Texture" type="Sprite2D" parent="."]
