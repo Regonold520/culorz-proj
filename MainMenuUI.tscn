@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqpqpebrkg20e"]
 
-[ext_resource type="Texture2D" uid="uid://dqy0kcxthuaab" path="res://CulorzLogo.png" id="2_q3puy"]
+[ext_resource type="Texture2D" uid="uid://b5tstjfj2frl4" path="res://culorzLogo.png" id="1_em22k"]
 [ext_resource type="Script" path="res://PlayButton.gd" id="3_m3nry"]
 [ext_resource type="Theme" uid="uid://tpy3d4a86kws" path="res://DefaultTheme.tres" id="3_oqqoe"]
 
@@ -15,11 +15,11 @@ offset_bottom = 280.0
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 144.5
-offset_top = 16.0
-offset_right = 354.5
-offset_bottom = 119.0
-texture = ExtResource("2_q3puy")
+offset_left = 108.0
+offset_top = 32.0
+offset_right = 395.0
+offset_bottom = 110.0
+texture = ExtResource("1_em22k")
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://g1os8xn2153x"]
+
+[ext_resource type="Texture2D" uid="uid://i4qrfgi4jxmw" path="res://Culorz/axe_chr.png" id="1_yjuk8"]
+
+[node name="CulorUiButton" type="Button"]
+offset_right = 24.0
+offset_bottom = 24.0
+icon = ExtResource("1_yjuk8")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

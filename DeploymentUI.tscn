@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsygsda77fo2e"]
+
+[ext_resource type="Script" path="res://deployment_ui.gd" id="1_6fiy4"]
+
+[node name="DeploymentUI" type="CanvasLayer"]
+script = ExtResource("1_6fiy4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 376.0
+offset_bottom = 280.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 20
+text = "DEPLOY YOUR CULORZ!!"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 33.0
+offset_right = 71.0
+offset_bottom = 67.0
+text = "Continue"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

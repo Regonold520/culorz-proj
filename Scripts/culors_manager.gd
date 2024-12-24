@@ -15,7 +15,7 @@ func _input(event):
 		# Left Click -> Rally
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed == true:
-				if canrally:
+				if canrally and Globalactor.UIPHASE == "Gameplay":
 					rally(get_global_mouse_position(),25)
 		
 		# Right Click -> Move

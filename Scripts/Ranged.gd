@@ -21,7 +21,7 @@ func target(Enemy : BaseEnemy):
 	TargetEnemy = Enemy
 
 func _process(delta):
-	if TargetEnemy:
+	if TargetEnemy != null:
 		move(TargetEnemy.global_position, false)  #move towards enemy, dont reset.
 		if position.distance_to(TargetEnemy.global_position) <= attackRange: #if within range, play attack_melee
 			if abs(position.angle_to_point(TargetEnemy.global_position)) <= deg_to_rad(90):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=7 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
 [ext_resource type="PackedScene" uid="uid://bqpqpebrkg20e" path="res://MainMenuUI.tscn" id="4_pywfv"]
+[ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="5_iwdsn"]
 [ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmv3g"]
@@ -16,6 +17,7 @@ offset_left = -606.0
 offset_top = -362.0
 offset_right = 648.0
 offset_bottom = 375.0
+mouse_filter = 2
 
 [node name="Canvas" type="Sprite2D" parent="."]
 z_index = -1000
@@ -28,6 +30,9 @@ script = ExtResource("3_2l4j3")
 [node name="Culors" type="Node2D" parent="."]
 
 [node name="Threats" type="Node2D" parent="."]
+
+[node name="Blob" parent="Threats" instance=ExtResource("5_iwdsn")]
+position = Vector2(-102, 20)
 
 [node name="CulorsManager" type="Node2D" parent="."]
 script = ExtResource("19_6oaph")
@@ -42,9 +47,6 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CulorsManager/SelectorArea"]
 shape = SubResource("CircleShape2D_kmv3g")
 debug_color = Color(0.956307, 0.130976, 0.417223, 0.42)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-42.667, 57.667)
 
 [node name="MoveArea" type="Area2D" parent="."]
 z_index = -1
@@ -76,6 +78,7 @@ offset_bottom = 280.0
 layout_mode = 0
 offset_right = 80.0
 offset_bottom = 280.0
+mouse_filter = 2
 columns = 3
 metadata/_edit_use_anchors_ = true
 
@@ -86,6 +89,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.32549)
+
+[node name="WaveManager" type="Node" parent="."]
 
 [connection signal="timeout" from="CulorsManager/RallyCooldown" to="CulorsManager" method="allowrally"]

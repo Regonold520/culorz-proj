@@ -7,13 +7,22 @@ var tweenPos
 var zoomPos
 var culorinventory = []
 var ShopMenu
+var MixerMenu
+var DeployMenu
 var MixerItems = []
 var ButtonsToCulors = {}
 var UIPHASE = "Main"
 
+var canDo2 = true
+
+var rng = RandomNumberGenerator.new()
+
 @onready var ButtonGroupE = ButtonGroup.new()
 
 @onready var CulorDisplay = get_parent().get_child(1).find_child("CulorUI").find_child("Control").find_child("GridContainer")
+
+func _process(delta: float) -> void:
+	pass
 
 func start():
 	UIPHASE = "Shop"
@@ -22,6 +31,7 @@ func start():
 	ShopMenu.find_child("Control").find_child("Money").text = "Prisms: " + str(Prisms)
 	ShopMenu.AttemptToBuyCulor.connect(AttemptedCulorPurchase)
 	ShopMenu.LeaveShop.connect(mixer)
+	
 	UpdateCulorDisplay()
 	
 	
@@ -35,14 +45,54 @@ func mixer():
 	ShopMenu.find_child("Control").mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	
-	var MixerMenu = preload("res://MixerUI.tscn").instantiate()
+	MixerMenu = preload("res://MixerUI.tscn").instantiate()
+	
+	MixerMenu.LeaveMixer.connect(deployment)
+	
 	get_parent().get_child(1).add_child(MixerMenu)
+	
+func deployment():
+	UIPHASE = "Deployment"
+	var NewTween = get_tree().create_tween()
+	
+	NewTween.tween_property(MixerMenu.find_child("Control"),"modulate", Color(0,0,0,0), 0.5)
+	
+	MixerMenu.find_child("Control").mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	DeployMenu = preload("res://DeploymentUI.tscn").instantiate()
+	
+	DeployMenu.LeaveDeployment.connect(gameplayBegin)
+	
+	get_parent().get_child(1).add_child(DeployMenu)
+	
+func gameplayBegin():
+	UIPHASE = "Gameplay"
+	
+	var NewTween = get_tree().create_tween()
+	
+	NewTween.tween_property(DeployMenu.find_child("Control"),"modulate", Color(0,0,0,0), 0.5)
+	NewTween.tween_property(get_tree().current_scene.find_child("CulorUI").find_child("ColorRect"),"modulate", Color(0,0,0,0), 0.5)
 	
 
 func CulorButtonPressThingamajig():
-	print("hi")
+	var button = ButtonGroupE.get_pressed_button()
+	
+	if UIPHASE == "Deployment":
+		var holder = get_parent().get_child(1).find_child("Culors")
+		
+		var newCulor = load("res://Culorz/" + button.get_meta("Name").to_lower() + ".tscn").instantiate()
+		
+		var randPos = Vector2(rng.randi_range(-48,48), rng.randi_range(27,63))
+		
+		newCulor.global_position = randPos
+		
+		holder.add_child(newCulor)
+		
+		button.disabled = true
+	
 	if UIPHASE == "Mixer":
-		var button = ButtonGroupE.get_pressed_button()
+		print("Mixing", button.get_meta("Name"))
+		
 		if len(MixerItems) < 2:
 			MixerItems.append(button)
 			button.disabled
@@ -51,14 +101,23 @@ func CulorButtonPressThingamajig():
 			NewSound.stream = preload("res://Error.mp3")
 			add_child(NewSound)
 			NewSound.play(0.3)
-
+			
+			
+		if len(MixerItems) == 1:
+			MixerMenu.find_child("Culor1").texture = load("res://Culorz/" + button.get_meta("Name").to_lower() + "_chr.png")
+		if len(MixerItems) == 2 and canDo2:
+			MixerMenu.find_child("Culor2").texture = load("res://Culorz/" + button.get_meta("Name").to_lower() + "_chr.png")
+			canDo2 = false
+			
 func UpdateCulorDisplay():
 	for Culor in CulorDisplay.get_children():
 		Culor.queue_free()
 	ButtonsToCulors = {}
 	for Culor in culorinventory:
-		var NewButton = Button.new()
+		var NewButton = load("res://SpecialScenes/CulorUIButton.tscn").instantiate()
+		
 		NewButton.icon = load("res://Culorz/" + Culor.to_lower() + "_chr.png")
+		NewButton.set_meta("Name", Culor)
 		CulorDisplay.add_child(NewButton)
 		NewButton.pressed.connect(CulorButtonPressThingamajig)
 		NewButton.button_group = ButtonGroupE
@@ -127,8 +186,6 @@ var assignedcolors = {
 	"Ninja": "000000",
 	"Choco":"8F563B",
 }
-
-
 func evaluatecolor(ncolor):
 	var bestdistance = 100000000
 
@@ -156,13 +213,13 @@ func color_distance(color1: Color, color2: Color, type : bool) -> float:
 
 func mixcolors(ColorsInQuestion : Array):
 
-	var currentcolor = ColorsInQuestion[0]
+	var currentcolor = Color(ColorsInQuestion[0])
 	for i in ColorsInQuestion.size():
 
 		var weirdorcolor = Color(ColorsInQuestion[i])
 		weirdorcolor.a = 0.5
 		currentcolor.a = 0.5
-		currentcolor = ColorsInQuestion[i].blend(currentcolor)
+		currentcolor = weirdorcolor.blend(currentcolor)
 		currentcolor.a = 1
 	
 	
