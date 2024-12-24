@@ -54,6 +54,7 @@ func get_culorz():
 	for Culor in get_tree().get_nodes_in_group("Culorz"):
 		if position.distance_to(Culor.position) <= attackRange:
 			distanceholder.append(Culor)
+			distance = 0
 	if distance == 999:
 		return false
 	else:

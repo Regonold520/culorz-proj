@@ -13,6 +13,7 @@ damage = 6
 Maxspeed = 50
 speed = 50
 attackRange = 25
+MaxattackSpeed = 1.65
 attackSpeed = 1.65
 
 [node name="Texture" type="Sprite2D" parent="."]

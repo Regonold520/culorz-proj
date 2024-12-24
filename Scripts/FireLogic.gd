@@ -25,10 +25,11 @@ func animation_hit():
 			
 			var tween = get_tree().create_tween()
 			
-			tween.tween_property(ring, "scale", Vector2(attackRange * 0.09488, attackRange * 0.09488), 0.3)
+			tween.tween_property(ring, "scale", Vector2(attackRange * 0.09488, attackRange * 0.09488), attackSpeed - 0.25)
 			
 			await tween.finished
 			
 			print("FIN",ring)
 			
-			ring.queue_free()
+			if not ring == null:
+				ring.queue_free()

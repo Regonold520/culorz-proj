@@ -12,6 +12,7 @@ script = ExtResource("1_g53n1")
 BulletType = ExtResource("2_jr4m0")
 culor = Color(1, 1, 1, 1)
 attackRange = 70
+MaxattackSpeed = 1.25
 attackSpeed = 1.25
 
 [node name="Texture" type="Sprite2D" parent="."]

@@ -4,11 +4,11 @@ var ring
 
 func animation_hit():
 	if Target != null:
-		var allTargets = get_enemies()
+		var allTargets = get_culorz()
 		print(allTargets)
 		if allTargets:
-			for enemy : BaseEnemy in allTargets:
-				enemy.add_modifier("speed" ,0.3 , 2.5)
+			for culor : BaseCulor in allTargets:
+				culor.add_modifier("attackSpeed" ,1.15 , 2.5)
 				
 			ring = Sprite2D.new()
 			ring.texture = load("res://ring_slim.svg")

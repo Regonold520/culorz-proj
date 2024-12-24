@@ -1,14 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://0qgftagkvqsa"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_jd7n6"]
+[ext_resource type="Script" path="res://Scripts/HeartLogic.gd" id="1_7clmp"]
 [ext_resource type="Texture2D" uid="uid://c5d35m6r8hbam" path="res://Culorz/heart_chr.png" id="2_6bbwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 13)
 
 [node name="Heart" type="CharacterBody2D"]
-script = ExtResource("1_jd7n6")
+script = ExtResource("1_7clmp")
+Maxdamage = 0
+damage = 0
+friendlyTarget = true
 culor = Color(0.67451, 0.196078, 0.356863, 1)
+Maxspeed = 30
+speed = 30
+Maxhealth = 10
+health = 10
+attackRange = 50
+MaxattackSpeed = 0.75
+attackSpeed = 0.75
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_6bbwu")

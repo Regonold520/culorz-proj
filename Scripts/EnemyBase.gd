@@ -58,9 +58,6 @@ func hit(damage, damager : BaseCulor):
 	velocity -= position.direction_to(damager.position) * 10
 	health -= damage
 	if health <= 0:
-		if "ring" in damager:
-			if damager.ring != null:
-				damager.ring.queue_free()
 		damager.TargetEnemy = null
 		die()
 

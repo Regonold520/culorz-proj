@@ -12,6 +12,7 @@ Maxdamage = 1
 damage = 1
 culor = Color(0.411765, 0.415686, 0.415686, 1)
 attackRange = 20
+MaxattackSpeed = 0.1
 attackSpeed = 0.1
 
 [node name="Texture" type="Sprite2D" parent="."]

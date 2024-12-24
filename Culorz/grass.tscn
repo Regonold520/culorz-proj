@@ -14,6 +14,7 @@ speed = 20
 Maxhealth = 30
 health = 30
 attackRange = 50
+MaxattackSpeed = 1.5
 attackSpeed = 1.5
 
 [node name="Texture" type="Sprite2D" parent="."]

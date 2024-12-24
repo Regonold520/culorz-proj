@@ -14,6 +14,8 @@ var Timesincestart : float # time since start
 
 
 @export var attackRange = 60
+
+@export var MaxattackSpeed = 1.0
 @export var attackSpeed = 1.0
 
 var attackTimer = Timer.new()
@@ -28,8 +30,13 @@ var animoffset = 0
 
 @onready var Animator = AnimationPlayer.new()
 
-func add_modifier(property, multiplier):
-	set(property, get(property) * multiplier)
+func add_modifier(property, multiplier, duration):
+	set(property, get("Max" + property) * multiplier)
+	
+	var timer = get_tree().create_timer(duration)
+	await timer.timeout
+	
+	set(property, get("Max" + property))
 
 func _ready():
 	setupculor()
@@ -105,6 +112,10 @@ func _physics_process(delta):
 	if health <= 0:
 		return
 	#MOVE!!
+	Animator.speed_scale = attackSpeed
+	
+	if name == "Fire":
+		print(attackSpeed)
 	runmove(delta)
 	
 	if !Animator.is_playing():

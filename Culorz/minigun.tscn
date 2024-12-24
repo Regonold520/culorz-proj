@@ -13,6 +13,7 @@ Maxdamage = 1
 damage = 1
 BulletType = ExtResource("2_13kta")
 culor = Color(0.392157, 0.819608, 0.505882, 1)
+MaxattackSpeed = 10.0
 attackSpeed = 10.0
 
 [node name="Texture" type="Sprite2D" parent="."]

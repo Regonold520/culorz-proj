@@ -4,11 +4,11 @@ var ring
 
 func animation_hit():
 	if Target != null:
-		var allTargets = get_enemies()
+		var allTargets = get_culorz()
 		print(allTargets)
 		if allTargets:
-			for enemy : BaseEnemy in allTargets:
-				enemy.add_modifier("speed" ,0.3 , 2.5)
+			for culor : BaseCulor in allTargets:
+				culor.add_modifier("damage" ,1.3 , 2)
 				
 			ring = Sprite2D.new()
 			ring.texture = load("res://ring_slim.svg")
@@ -24,11 +24,12 @@ func animation_hit():
 			
 			var tween = get_tree().create_tween()
 			
-			tween.tween_property(ring, "scale", Vector2(attackRange * 0.09488, attackRange * 0.09488), attackSpeed - 0.25)
+			tween.tween_property(ring, "scale", Vector2(attackRange * 0.09488, attackRange * 0.09488), attackSpeed - 0.75)
+			
+			print("SIGMA",ring)
 			
 			await tween.finished
-			
-			print("FIN",ring)
+		
 			
 			if not ring == null:
 				ring.queue_free()
