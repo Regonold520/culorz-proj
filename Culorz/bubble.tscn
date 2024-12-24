@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://3ox2fytgb40y"]
+[gd_scene load_steps=5 format=3 uid="uid://3ox2fytgb40y"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_w85mn"]
+[ext_resource type="Script" path="res://Scripts/BubbleLogic.gd" id="1_v6ftn"]
+[ext_resource type="PackedScene" uid="uid://bs8m0w025iicj" path="res://bullet/bubble.tscn" id="2_0kkkt"]
 [ext_resource type="Texture2D" uid="uid://gvi8w7muir31" path="res://Culorz/bubble_chr.png" id="2_pjv4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(12, 10)
 
 [node name="Bubble" type="CharacterBody2D"]
-script = ExtResource("1_w85mn")
+script = ExtResource("1_v6ftn")
+BulletType = ExtResource("2_0kkkt")
 culor = Color(0.380392, 0.74902, 0.913725, 1)
+speed = 30
+health = 10
+attackSpeed = 3.0
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_pjv4u")

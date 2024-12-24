@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=9 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
 [ext_resource type="PackedScene" uid="uid://bqpqpebrkg20e" path="res://MainMenuUI.tscn" id="4_pywfv"]
 [ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="5_iwdsn"]
+[ext_resource type="Script" path="res://wave_manager.gd" id="6_a7uf1"]
+[ext_resource type="PackedScene" uid="uid://3ox2fytgb40y" path="res://Culorz/bubble.tscn" id="7_6ywil"]
 [ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmv3g"]
@@ -28,6 +30,21 @@ texture = ExtResource("1_pamka")
 script = ExtResource("3_2l4j3")
 
 [node name="Culors" type="Node2D" parent="."]
+
+[node name="Bubble" parent="Culors" instance=ExtResource("7_6ywil")]
+position = Vector2(11, 37)
+
+[node name="Bubble2" parent="Culors" instance=ExtResource("7_6ywil")]
+position = Vector2(-4, 58)
+
+[node name="Bubble3" parent="Culors" instance=ExtResource("7_6ywil")]
+position = Vector2(-3, 44)
+
+[node name="Bubble4" parent="Culors" instance=ExtResource("7_6ywil")]
+position = Vector2(12, 54)
+
+[node name="Bubble5" parent="Culors" instance=ExtResource("7_6ywil")]
+position = Vector2(25, 45)
 
 [node name="Threats" type="Node2D" parent="."]
 
@@ -93,5 +110,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.32549)
 
 [node name="WaveManager" type="Node" parent="."]
+script = ExtResource("6_a7uf1")
 
 [connection signal="timeout" from="CulorsManager/RallyCooldown" to="CulorsManager" method="allowrally"]

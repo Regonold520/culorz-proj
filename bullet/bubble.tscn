@@ -8,7 +8,7 @@ size = Vector2(7, 6)
 
 [node name="Bullet" type="RigidBody2D"]
 script = ExtResource("1_bvjit")
-Movespeed = 20
+Movespeed = 50
 
 [node name="Area2D" type="Area2D" parent="."]
 

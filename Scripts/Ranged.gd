@@ -32,7 +32,7 @@ func _process(delta):
 func animation_hit(): #activated by the animation.
 	if TargetEnemy != null:
 		var bullet : Bullet = BulletType.instantiate()
-		self.get_parent().get_parent().add_child(bullet)
+		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = global_position
 		bullet.global_rotation = position.angle_to_point(TargetEnemy.position)
 		bullet.linear_velocity = (position.direction_to(TargetEnemy.position) * bullet.Movespeed)
