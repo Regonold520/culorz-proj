@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://goop3qaepptx"]
+[gd_scene load_steps=10 format=3 uid="uid://goop3qaepptx"]
 
 [ext_resource type="Texture2D" uid="uid://1oyliv8nmj6b" path="res://Canvas.png" id="1_pamka"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_2l4j3"]
+[ext_resource type="PackedScene" uid="uid://cnbnlrn068x63" path="res://Culorz/fire.tscn" id="3_56qd1"]
+[ext_resource type="PackedScene" uid="uid://cafrjnpwcqr3" path="res://Culorz/bow.tscn" id="4_2hnsr"]
 [ext_resource type="PackedScene" uid="uid://bqpqpebrkg20e" path="res://MainMenuUI.tscn" id="4_pywfv"]
 [ext_resource type="PackedScene" uid="uid://cj1q1gtlwteso" path="res://Enemies/blob.tscn" id="5_iwdsn"]
 [ext_resource type="Script" path="res://wave_manager.gd" id="6_a7uf1"]
-[ext_resource type="PackedScene" uid="uid://3ox2fytgb40y" path="res://Culorz/bubble.tscn" id="7_6ywil"]
 [ext_resource type="Script" path="res://Scripts/culors_manager.gd" id="19_6oaph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmv3g"]
@@ -31,20 +32,11 @@ script = ExtResource("3_2l4j3")
 
 [node name="Culors" type="Node2D" parent="."]
 
-[node name="Bubble" parent="Culors" instance=ExtResource("7_6ywil")]
-position = Vector2(11, 37)
+[node name="Fire" parent="Culors" instance=ExtResource("3_56qd1")]
+position = Vector2(0, 41)
 
-[node name="Bubble2" parent="Culors" instance=ExtResource("7_6ywil")]
-position = Vector2(-4, 58)
-
-[node name="Bubble3" parent="Culors" instance=ExtResource("7_6ywil")]
-position = Vector2(-3, 44)
-
-[node name="Bubble4" parent="Culors" instance=ExtResource("7_6ywil")]
-position = Vector2(12, 54)
-
-[node name="Bubble5" parent="Culors" instance=ExtResource("7_6ywil")]
-position = Vector2(25, 45)
+[node name="Vermilion" parent="Culors" instance=ExtResource("4_2hnsr")]
+position = Vector2(18, 22)
 
 [node name="Threats" type="Node2D" parent="."]
 

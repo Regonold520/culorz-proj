@@ -40,10 +40,20 @@ func process_select(pos):
 			selected_area_prio = AreaInQuestion.priority
 	
 	if selected_area:
+		print(selected_area.get_parent())
 		if selected_area.get_parent() is BaseEnemy:
 			if Globalactor.get_selected_culors():
 				for Culor : BaseCulor in Globalactor.get_selected_culors():
-					Culor.target(selected_area.get_parent())
+					if "friendlyTarget" in Culor and !Culor.friendlyTarget:
+						Culor.target(selected_area.get_parent())
+					elif "friendlyTarget" not in Culor:
+						Culor.target(selected_area.get_parent())
+			return
+		if selected_area.get_parent() is BaseCulor:
+			if Globalactor.get_selected_culors():
+				for Culor : BaseCulor in Globalactor.get_selected_culors():
+					if "friendlyTarget" in Culor and Culor.friendlyTarget:
+						Culor.target(selected_area.get_parent())
 			return
 		if selected_area == MoveArea:
 			if Globalactor.get_selected_culors():

@@ -44,6 +44,13 @@ func hit(damage, damager : BaseEnemy):
 		die()
 
 func setupculor():
+	var newArea : Area2D = Area2D.new()
+	var newShape = find_child("CollisionShape2D").duplicate()
+	
+	newArea.priority = 1
+	
+	add_child(newArea)
+	newArea.add_child(newShape)
 	
 	#do technical stuff
 	safe_margin = 0.001
