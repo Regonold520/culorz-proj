@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b43h0wjpafait"]
+[gd_scene load_steps=5 format=3 uid="uid://b43h0wjpafait"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_egrbg"]
 [ext_resource type="Texture2D" uid="uid://c121fyt1ym3ne" path="res://bullet/Mage.png" id="2_i50bt"]
+[ext_resource type="AudioStream" uid="uid://gcpx344jtej1" path="res://Sounds/splat.wav" id="2_qlx5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
 size = Vector2(4, 4)
@@ -9,6 +10,7 @@ size = Vector2(4, 4)
 [node name="Bullet" type="RigidBody2D"]
 script = ExtResource("1_egrbg")
 Movespeed = 80
+HitSound = ExtResource("2_qlx5d")
 
 [node name="Pistol" type="Sprite2D" parent="."]
 position = Vector2(8.47033e-22, 8.47033e-22)

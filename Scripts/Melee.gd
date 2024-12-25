@@ -22,7 +22,7 @@ func target(Enemy : BaseEnemy):
 	TargetEnemy = Enemy
 
 func _process(delta):
-	if TargetEnemy:
+	if TargetEnemy and TargetEnemy != null:
 		move(TargetEnemy.global_position, false)  #move towards enemy, dont reset.
 		if position.distance_to(TargetEnemy.global_position) <= attackRange: #if within range, play attack_melee
 			if abs(position.angle_to_point(TargetEnemy.global_position)) <= deg_to_rad(90):
@@ -31,4 +31,5 @@ func _process(delta):
 				Animator.play("attack_melee")
 
 func animation_hit(): #activated by the animation.
-	TargetEnemy.hit(damage,self)
+	if TargetEnemy:
+		TargetEnemy.hit(damage,self)

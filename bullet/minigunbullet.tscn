@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bob6gt3klmmwg"]
+[gd_scene load_steps=5 format=3 uid="uid://bob6gt3klmmwg"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_1jdpx"]
+[ext_resource type="AudioStream" uid="uid://6ncpfnc6uw5g" path="res://Sounds/snap.wav" id="2_ry7gw"]
 [ext_resource type="Texture2D" uid="uid://binfld4y7bbaq" path="res://bullet/Minigun.png" id="2_txudv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
@@ -9,6 +10,7 @@ size = Vector2(2, 2)
 [node name="Bullet" type="RigidBody2D"]
 script = ExtResource("1_1jdpx")
 Movespeed = 80
+HitSound = ExtResource("2_ry7gw")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -8,6 +8,7 @@ size = Vector2(12, 15)
 
 [node name="Blob" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_bjjdk")
+Maxdamage = 5
 damage = 5
 ParticleColor = Color(0.67451, 0.196078, 0.196078, 1)
 

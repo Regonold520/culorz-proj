@@ -21,15 +21,24 @@ var rng = RandomNumberGenerator.new()
 @onready var ButtonGroupE = ButtonGroup.new()
 
 @onready var CulorDisplay = get_parent().get_child(1).find_child("CulorUI").find_child("Control").find_child("GridContainer")
+@onready var MusicPlayer = get_parent().get_child(1).find_child("AudioStreamPlayer")
 
-func _process(delta: float) -> void:
-	pass
+func _ready():
+	MusicPlayer.TransitionTo("Culorz Theme")
 
 func start():
+	MusicPlayer.TransitionTo("Culorz Theme")
 	UIPHASE = "Shop"
 	ShopMenu = preload("res://ShopUI.tscn").instantiate()
+	
 	get_parent().get_child(1).add_child(ShopMenu)
+	ShopMenu.find_child("Control").modulate = Color(0,0,0,0)
+	var NewTween = get_tree().create_tween()
+	NewTween.tween_property(ShopMenu.find_child("Control"),"modulate", Color(1,1,1,1), 0.5)
+	NewTween.parallel().tween_property(get_tree().current_scene.find_child("CulorUI").find_child("ColorRect"),"modulate", Color(1,1,1,1), 0.5)
+	
 	ShopMenu.find_child("Control").find_child("Money").text = "Prisms: " + str(Prisms)
+	ShopMenu.find_child("Control").find_child("Wave").text = "Wave: " + str(CurrentWave)
 	ShopMenu.AttemptToBuyCulor.connect(AttemptedCulorPurchase)
 	ShopMenu.LeaveShop.connect(mixer)
 	
@@ -51,6 +60,8 @@ func mixer():
 	MixerMenu.LeaveMixer.connect(deployment)
 	
 	get_parent().get_child(1).add_child(MixerMenu)
+	await NewTween.finished
+	ShopMenu.queue_free()
 	
 func deployment():
 	UIPHASE = "Deployment"
@@ -76,6 +87,11 @@ func gameplayBegin():
 	NewTween.tween_property(DeployMenu.find_child("Control"),"modulate", Color(0,0,0,0), 0.5)
 	NewTween.tween_property(get_tree().current_scene.find_child("CulorUI").find_child("ColorRect"),"modulate", Color(0,0,0,0), 0.5)
 	
+	await get_tree().create_timer(1).timeout
+	get_parent().get_child(1).find_child("WaveManager")._start_wave()
+	
+	MusicPlayer.TransitionTo("The Pallette")
+	
 
 func CulorButtonPressThingamajig():
 	var button = ButtonGroupE.get_pressed_button()
@@ -84,6 +100,7 @@ func CulorButtonPressThingamajig():
 		var holder = get_parent().get_child(1).find_child("Culors")
 		
 		var newCulor = load("res://Culorz/" + button.get_meta("Name").to_lower() + ".tscn").instantiate()
+		newCulor.set_meta("Type",button.get_meta("Name"))
 		
 		var randPos = Vector2(rng.randi_range(-48,48), rng.randi_range(27,63))
 		
@@ -92,6 +109,9 @@ func CulorButtonPressThingamajig():
 		holder.add_child(newCulor)
 		
 		button.disabled = true
+		
+		DeployMenu.find_child("Control").find_child("Button").disabled = false
+		
 	
 	if UIPHASE == "Mixer":
 		print("Mixing", button.get_meta("Name"))
@@ -109,7 +129,7 @@ func CulorButtonPressThingamajig():
 					GradientE.set_color(1, Color(assignedcolors[MixerItems[1].get_meta("Name")]) )
 		else:
 			var NewSound = AudioStreamPlayer.new()
-			NewSound.stream = preload("res://Error.mp3")
+			NewSound.stream = preload("res://Sounds/Error.mp3")
 			add_child(NewSound)
 			NewSound.play(0.3)
 			
@@ -137,7 +157,7 @@ func UpdateCulorDisplay():
 func AttemptedCulorPurchase(Culor : String, Price : int):
 	if Price <= Prisms:
 		var NewSound = AudioStreamPlayer.new()
-		NewSound.stream = preload("res://Purchase.mp3")
+		NewSound.stream = preload("res://Sounds/Purchase.mp3")
 		add_child(NewSound)
 		NewSound.play(1)
 		
@@ -148,10 +168,11 @@ func AttemptedCulorPurchase(Culor : String, Price : int):
 		
 	else:
 		var NewSound = AudioStreamPlayer.new()
-		NewSound.stream = preload("res://Error.mp3")
+		NewSound.stream = preload("res://Sounds/Error.mp3")
 		add_child(NewSound)
 		NewSound.play(0.3)
 	ShopMenu.find_child("Control").find_child("Money").text = "Prisms: " + str(Prisms)
+	ShopMenu.find_child("Control").find_child("Wave").text = "Wave: " + str(CurrentWave)
 	UpdateCulorDisplay()
 
 func get_selected_culors():

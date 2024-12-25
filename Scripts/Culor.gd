@@ -30,6 +30,8 @@ var animoffset = 0
 
 @onready var Animator = AnimationPlayer.new()
 
+signal Died
+
 func add_modifier(property, multiplier, duration):
 	set(property, get("Max" + property) * multiplier)
 	
@@ -44,6 +46,7 @@ func _ready():
 func die():
 	if $Texture:
 		$Texture.queue_free()
+		emit_signal("Died")
 		var CoolParticles = preload("res://death_particles.tscn").instantiate()
 		CoolParticles.color = culor
 		add_child(CoolParticles)

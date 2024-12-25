@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnulnihf8hlmh"
+path="res://.godot/imported/Culorz Theme.mp3-c0c57c8b2b8e200df68d1b84513573e4.mp3str"
+
+[deps]
+
+source_file="res://Music/Culorz Theme.mp3"
+dest_files=["res://.godot/imported/Culorz Theme.mp3-c0c57c8b2b8e200df68d1b84513573e4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

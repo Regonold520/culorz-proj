@@ -24,7 +24,8 @@ func animation_hit():
 			
 			var tween = get_tree().create_tween()
 			
-			tween.tween_property(ring, "scale", Vector2(attackRange * 0.09488, attackRange * 0.09488), attackSpeed - 0.25)
+			tween.tween_property(ring, "scale", Vector2(attackRange * 0.09488, attackRange * 0.09488), attackSpeed - 0.75)
+			tween.tween_property(ring, "modulate", Color(0,0,0,0),attackSpeed - 0.75)
 			
 			await tween.finished
 			

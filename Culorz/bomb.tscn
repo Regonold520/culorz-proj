@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://c10eqju22hs7o"]
+[gd_scene load_steps=5 format=3 uid="uid://c10eqju22hs7o"]
 
 [ext_resource type="Script" path="res://Scripts/Ranged.gd" id="1_40pt0"]
 [ext_resource type="Texture2D" uid="uid://bo68ca6slj7i8" path="res://Culorz/bomb_chr.png" id="2_ekl4b"]
+[ext_resource type="PackedScene" uid="uid://g68m2pfhshnh" path="res://bullet/bomb.tscn" id="2_wlbi8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 11)
 
 [node name="Bomb" type="CharacterBody2D"]
 script = ExtResource("1_40pt0")
+BulletType = ExtResource("2_wlbi8")
+Maxspeed = 30
+speed = 30
+Maxhealth = 15
+health = 15
+attackRange = 55
+MaxattackSpeed = 0.9
+attackSpeed = 0.9
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_ekl4b")

@@ -25,6 +25,15 @@ offset_right = 73.0
 offset_bottom = 25.0
 text = "Prisms: 0"
 
+[node name="Wave" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 27.0
+offset_right = 73.0
+offset_bottom = 50.0
+text = "Wave:
+"
+
 [node name="TextureRect" type="TextureRect" parent="Control"]
 modulate = Color(0.548963, 0.548963, 0.548963, 1)
 layout_mode = 0

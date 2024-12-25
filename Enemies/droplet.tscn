@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2gef32yvdwk8"]
+
+[ext_resource type="Script" path="res://Scripts/RangedEnemy.gd" id="1_kmajl"]
+[ext_resource type="PackedScene" uid="uid://dts24yi0kagx3" path="res://bullet/water.tscn" id="2_16hac"]
+[ext_resource type="Texture2D" uid="uid://dq30sqct34q0r" path="res://Enemies/Droplet.png" id="2_rxl0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l2v8"]
+size = Vector2(12, 15)
+
+[node name="Droplet" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_kmajl")
+BulletType = ExtResource("2_16hac")
+Maxspeed = 10
+speed = 10
+Maxhealth = 15
+health = 15
+Maxdamage = 4
+damage = 4
+range = 70
+ViewRange = 90
+ParticleColor = Color(0.388235, 0.607843, 1, 1)
+AttackSpeed = 0.5
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_rxl0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8l2v8")
+
+[node name="EnemyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8l2v8")

@@ -4,6 +4,7 @@ class_name Bullet
 @export var Movespeed = 10
 @export var Pierce = false
 @export var expiration = 10
+@export var HitSound = AudioStream.new()
 
 var Shooter = null
 var Damage = 10
@@ -18,6 +19,14 @@ func _on_area_2d_area_entered(area):
 		if area.get_parent() is BaseEnemy:
 			if !hitenemies.has(area):
 				hitenemies.append(area)
-				area.get_parent().hit(Damage,Shooter)
-				if !Pierce:
-					queue_free()
+				if area.get_parent().has_method("hit"):
+					if area.get_parent() != null:
+						area.get_parent().hit(Damage,Shooter)
+						if !Pierce:
+							var NewAudio = AudioStreamPlayer2D.new()
+							get_tree().current_scene.add_child(NewAudio)
+							NewAudio.pitch_scale = randf_range(0.9,1.1)
+							NewAudio.stream = HitSound
+							NewAudio.playing = true
+							
+							queue_free()

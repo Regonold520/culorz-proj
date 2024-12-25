@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0tgh4bwjpa6t"]
+[gd_scene load_steps=5 format=3 uid="uid://d0tgh4bwjpa6t"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_b71ll"]
+[ext_resource type="AudioStream" uid="uid://b305f22rm3of5" path="res://Sounds/hit.wav" id="2_5g567"]
 [ext_resource type="Texture2D" uid="uid://bkom0cogektex" path="res://bullet/Sun.png" id="2_m7ob5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
@@ -10,6 +11,7 @@ size = Vector2(4, 4)
 script = ExtResource("1_b71ll")
 Movespeed = 80
 Pierce = true
+HitSound = ExtResource("2_5g567")
 
 [node name="Pistol" type="Sprite2D" parent="."]
 rotation = 1.5708

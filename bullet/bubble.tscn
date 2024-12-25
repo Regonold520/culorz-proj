@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs8m0w025iicj"]
+[gd_scene load_steps=5 format=3 uid="uid://bs8m0w025iicj"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_bvjit"]
+[ext_resource type="AudioStream" uid="uid://d1cnc77jv2xrb" path="res://Sounds/Bubble.mp3" id="2_alumt"]
 [ext_resource type="Texture2D" uid="uid://budj7n3siu2al" path="res://bullet/Bubble.png" id="2_ffvsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hvor"]
@@ -9,6 +10,7 @@ size = Vector2(7, 6)
 [node name="Bullet" type="RigidBody2D"]
 script = ExtResource("1_bvjit")
 Movespeed = 50
+HitSound = ExtResource("2_alumt")
 
 [node name="Area2D" type="Area2D" parent="."]
 

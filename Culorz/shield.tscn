@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3gfudi6vbguo"]
+[gd_scene load_steps=6 format=3 uid="uid://d3gfudi6vbguo"]
 
-[ext_resource type="Script" path="res://Scripts/Culor.gd" id="1_cmg4a"]
+[ext_resource type="Script" path="res://Scripts/Support.gd" id="1_5qg1a"]
 [ext_resource type="Texture2D" uid="uid://b8teqai10lfws" path="res://Culorz/shield_chr.png" id="2_5vh8w"]
+[ext_resource type="Texture2D" uid="uid://nxkfc1rghq6k" path="res://ring_slim.svg" id="3_msi8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqd2g"]
 size = Vector2(14, 9)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhca3"]
+radius = 30.0
+
 [node name="Shield" type="CharacterBody2D"]
-script = ExtResource("1_cmg4a")
+script = ExtResource("1_5qg1a")
+friendlyTarget = true
 culor = Color(0.509804, 0.501961, 0.862745, 1)
+Maxspeed = 30
+speed = 1
+attackRange = 30
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_5vh8w")
@@ -18,3 +26,15 @@ modulate = Color(1, 0, 1, 1)
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_uqd2g")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="Area2D" type="Area2D" parent="."]
+priority = -3
+metadata/BulletStopping = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qhca3")
+
+[node name="RingSlim" type="Sprite2D" parent="."]
+modulate = Color(0.294118, 0.290196, 0.619608, 1)
+scale = Vector2(3.145, 3.145)
+texture = ExtResource("3_msi8p")

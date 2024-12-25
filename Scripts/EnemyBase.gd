@@ -13,6 +13,7 @@ class_name BaseEnemy
 @export var range = 20
 @export var ViewRange = 50
 @export var ParticleColor : Color
+@export var AttackSpeed = 1.0
 
 
 @onready var Animator = AnimationPlayer.new()
@@ -22,6 +23,8 @@ var Target = null
 var TargetPosition
 var Targetcutoff
 var deltacount = 0
+
+signal Died
 
 func add_modifier(property, multiplier, duration):
 	set(property, get("Max" + property) * multiplier)
@@ -33,6 +36,7 @@ func add_modifier(property, multiplier, duration):
 
 func _ready():
 	add_child(Animator)
+	Animator.speed_scale = AttackSpeed
 	Animator.add_animation_library("",load("res://EnemyAnimations.tres"))
 
 func move(pos : Vector2, resettarget = true):
@@ -52,6 +56,7 @@ func die():
 		CoolParticles.emitting = true
 		await CoolParticles.finished
 		queue_free()
+		emit_signal("Died")
 	
 
 func hit(damage, damager : BaseCulor):

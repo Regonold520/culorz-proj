@@ -13,6 +13,7 @@ func _on_blue_button_pressed():
 
 func _ready():
 	RandomCulor = Globalactor.assignedcolors.keys().pick_random()
+	RandomCulor = "Bubble"
 	var newtexture = load("res://Culorz/" + RandomCulor.to_lower() + "_chr.png")
 	$Control/RandomCulor.texture = newtexture
 

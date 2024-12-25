@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqpqpebrkg20e"]
+[gd_scene load_steps=5 format=3 uid="uid://bqpqpebrkg20e"]
 
-[ext_resource type="Texture2D" uid="uid://b5tstjfj2frl4" path="res://culorzLogo.png" id="1_em22k"]
+[ext_resource type="Texture2D" uid="uid://b5tstjfj2frl4" path="res://CulorzLogo.png" id="1_em22k"]
+[ext_resource type="Script" path="res://Scripts/CulorShopDisplay.gd" id="2_r558t"]
 [ext_resource type="Script" path="res://PlayButton.gd" id="3_m3nry"]
 [ext_resource type="Theme" uid="uid://tpy3d4a86kws" path="res://DefaultTheme.tres" id="3_oqqoe"]
 
@@ -12,7 +13,15 @@ anchors_preset = 0
 offset_right = 369.0
 offset_bottom = 280.0
 
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(251.5, 70.5)
+scale = Vector2(1.442, 1.442)
+texture = ExtResource("1_em22k")
+script = ExtResource("2_r558t")
+RotationPower = 1
+
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 108.0
